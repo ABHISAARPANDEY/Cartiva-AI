@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import dashboardImage from "@assets/generated_images/modern_saas_analytics_dashboard_mockup.png";
+import info6 from "@assets/info6_1768935965844.png";
 import { Check } from "lucide-react";
 
 export function DashboardPreview() {
@@ -19,8 +19,8 @@ export function DashboardPreview() {
               className="relative rounded-xl overflow-hidden shadow-2xl border border-border bg-slate-50 dark:bg-slate-900 p-2 transition-transform duration-500"
             >
                <img 
-                src={dashboardImage} 
-                alt="AI Performance Dashboard" 
+                src={info6} 
+                alt="Real-Time ROI Dashboard" 
                 className="w-full h-auto rounded-lg"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/10 to-transparent pointer-events-none" />
