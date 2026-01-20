@@ -5,39 +5,41 @@ import {
   RefreshCw, 
   TrendingUp, 
   Languages, 
-  Clock 
+  Zap,
+  Target,
+  Clock
 } from "lucide-react";
 
 const features = [
   {
     icon: <MessageCircle className="w-6 h-6" />,
-    title: "Instant AI Responses",
-    description: "Reply to customers in seconds on WhatsApp and Web Chat. 24/7 coverage for FAQs, status, and sales."
+    title: "24/7 Instant Engagement",
+    description: "Reply to every query instantly on WhatsApp and your website. Never lose a lead to slow response times again."
   },
   {
-    icon: <RefreshCw className="w-6 h-6" />,
-    title: "Automated Returns & Tracking",
-    description: "Deflect 70% of support tickets by automating order tracking, return requests, and refund status."
-  },
-  {
-    icon: <ShoppingBag className="w-6 h-6" />,
-    title: "Cart Recovery on WhatsApp",
-    description: "Automatically message customers on WhatsApp to recover lost sales and boost conversion rates."
+    icon: <Target className="w-6 h-6" />,
+    title: "Lead Qualification AI",
+    description: "Automatically qualify leads, book meetings, and capture data. Focus your team's time only on high-value prospects."
   },
   {
     icon: <TrendingUp className="w-6 h-6" />,
-    title: "Smart Upsell Agent",
-    description: "Let AI recommend products based on chat history to increase your Average Order Value (AOV)."
+    title: "Sales & Upsell Automation",
+    description: "Close more sales with an AI that proactively recommends products and recovers abandoned carts via WhatsApp."
   },
   {
-    icon: <Languages className="w-6 h-6" />,
-    title: "Hindi & English Support",
-    description: "Built for Indian D2C brands. Native support for English, Hindi, and regional dialects."
+    icon: <RefreshCw className="w-6 h-6" />,
+    title: "Smart Support Deflection",
+    description: "Automate up to 70% of repetitive questions, order tracking, and service requests without hiring more staff."
   },
   {
-    icon: <Clock className="w-12 h-12" />,
+    icon: <Zap className="w-6 h-6" />,
+    title: "Universal Integration",
+    description: "Works on any website—Shopify, WooCommerce, custom builds, or service pages. Setup in under 10 minutes."
+  },
+  {
+    icon: <Clock className="w-6 h-6" />,
     title: "Plug-and-Play Setup",
-    description: "Connect your Shopify store and go live in under 10 minutes. No technical team required."
+    description: "Simply connect your data and go live. No complex coding, no technical jargon, just immediate results."
   }
 ];
 
@@ -75,9 +77,9 @@ export function Features() {
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4 tracking-tight">Everything You Need to Scale Fast</h2>
+          <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4 tracking-tight">Built for Maximum Conversion</h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            Cartiva AI replaces manual tasks with intelligent automation, turning your support team into a revenue engine.
+            Cartiva AI is your all-in-one agent for sales, lead capture, and instant support—designed to grow your revenue around the clock.
           </p>
         </motion.div>
 

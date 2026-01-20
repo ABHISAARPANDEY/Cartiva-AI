@@ -20,7 +20,7 @@ export function DashboardPreview() {
             >
                <img 
                 src={dashboardImage} 
-                alt="AI Sales Dashboard" 
+                alt="AI Performance Dashboard" 
                 className="w-full h-auto rounded-lg"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/10 to-transparent pointer-events-none" />
@@ -40,7 +40,7 @@ export function DashboardPreview() {
               viewport={{ once: true }}
               className="text-3xl md:text-4xl font-heading font-bold mb-6 tracking-tight"
             >
-              Real-Time ROI Tracking
+              Monitor Every Sale & Interaction
             </motion.h2>
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
@@ -49,15 +49,15 @@ export function DashboardPreview() {
               transition={{ delay: 0.1 }}
               className="text-lg text-muted-foreground mb-8 leading-relaxed"
             >
-              Stop guessing. See exactly how many sales your AI agent is closing and how many support hours it's saving your team every day.
+              Gain complete transparency with our real-time ROI dashboard. Track exactly how many leads your AI has captured and the revenue it has influenced.
             </motion.p>
 
             <ul className="space-y-4">
               {[
-                "Track automated sales & recovered revenue",
-                "Monitor 24/7 resolution rates & response times",
-                "Measure customer sentiment on every chat",
-                "Calculate total support cost savings instantly"
+                "Track automated sales & lead qualification rates",
+                "Monitor 24/7 engagement & response times",
+                "Analyze customer sentiment on every interaction",
+                "Measure total support cost savings & ROI"
               ].map((item, i) => (
                 <motion.li 
                   key={i}

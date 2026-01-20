@@ -1,42 +1,42 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import { Check, Store, MessageSquare, Rocket, ArrowRight } from "lucide-react";
+import { Check, Globe, MessageSquare, Rocket, ArrowRight } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 
 const steps = [
   {
-    icon: <Store className="w-8 h-8" />,
-    title: "Connect Your Store",
-    description: "Plug-and-play integration with Shopify. Sync your products, orders, and customer data in one click.",
+    icon: <Globe className="w-8 h-8" />,
+    title: "Connect Your Website",
+    description: "Plug-and-play integration for any website. Whether it's Shopify, WooCommerce, or a custom build, sync your data in one click.",
     details: [
-      "Secure OAuth connection",
-      "Real-time inventory sync",
-      "Order history indexing",
-      "Automated catalog mapping"
+      "Works on any platform",
+      "Real-time data sync",
+      "Automatic content indexing",
+      "Secure API connection"
     ]
   },
   {
     icon: <MessageSquare className="w-8 h-8" />,
-    title: "Configure AI Agent",
-    description: "Customize your agent's personality, knowledge base, and automated workflows.",
+    title: "Customize Your AI Agent",
+    description: "Train your agent on your knowledge base and define its personality to match your brand's unique voice.",
     details: [
-      "Custom brand voice",
-      "FAQ training with 1-click",
+      "Custom brand personality",
+      "Instant FAQ training",
       "WhatsApp & Web Chat setup",
-      "Refund & Return rules"
+      "Lead qualification rules"
     ]
   },
   {
     icon: <Rocket className="w-8 h-8" />,
-    title: "Go Live & Scale",
-    description: "Activate your AI agent and watch it handle 70% of conversations while you focus on growth.",
+    title: "Go Live & Scale Revenue",
+    description: "Activate your agent and watch it handle 70% of conversations while proactively closing sales and capturing leads.",
     details: [
       "Instant response times",
-      "Abandoned cart recovery",
+      "Automated lead capture",
       "Multilingual support",
-      "Revenue tracking dashboard"
+      "Full ROI dashboard"
     ]
   }
 ];
@@ -54,10 +54,10 @@ export default function HowItWorks() {
             className="text-center max-w-3xl mx-auto mb-20"
           >
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-6 tracking-tight">
-              Get started in <span className="text-primary">minutes</span>
+              From Setup to <span className="text-primary">Sales</span> in 10 Minutes
             </h1>
             <p className="text-xl text-muted-foreground leading-relaxed">
-              No complex coding or months of training. Cartiva AI is built to work out of the box for modern D2C brands.
+              No technical team or complex coding required. Cartiva AI is built to deliver immediate results for websites and WhatsApp-first businesses.
             </p>
           </motion.div>
 
@@ -119,17 +119,17 @@ export default function HowItWorks() {
             <div className="absolute bottom-0 left-0 w-64 h-64 bg-accent/10 blur-[100px] rounded-full" />
             
             <div className="relative z-10 space-y-8">
-              <h2 className="text-3xl md:text-4xl font-heading font-bold">Ready to see it in action?</h2>
+              <h2 className="text-3xl md:text-4xl font-heading font-bold">Ready to Automate Your Success?</h2>
               <p className="text-slate-400 text-lg max-w-xl mx-auto">
-                Connect your Shopify store today and see the first automated conversations within 10 minutes.
+                Join 500+ businesses using Cartiva AI to grow revenue and scale support without increasing headcount.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button size="lg" className="h-14 px-8 text-lg bg-primary hover:bg-primary/90">
-                  Book a Demo
+                  Book My Free Demo
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
                 <Button size="lg" variant="outline" className="h-14 px-8 text-lg border-white/10 hover:bg-white/5">
-                  View Case Studies
+                  See Case Studies
                 </Button>
               </div>
             </div>
