@@ -31,10 +31,7 @@ export function Navbar() {
         </div>
 
         <div className="hidden md:flex items-center gap-4">
-          <Link href="/auth">
-            <Button variant="ghost" size="sm" className="font-medium">Log in</Button>
-          </Link>
-          <Link href="/auth">
+          <Link href="/book-demo">
             <Button size="sm" className="bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/20">
               Book a Demo
             </Button>

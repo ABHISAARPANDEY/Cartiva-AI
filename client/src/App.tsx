@@ -7,8 +7,8 @@ import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
 import HowItWorks from "@/pages/HowItWorks";
 import Integrations from "@/pages/Integrations";
-import Auth from "@/pages/Auth";
 import Pricing from "@/pages/Pricing";
+import BookDemo from "@/pages/BookDemo";
 
 function Router() {
   return (
@@ -17,7 +17,7 @@ function Router() {
       <Route path="/how-it-works" component={HowItWorks} />
       <Route path="/integrations" component={Integrations} />
       <Route path="/pricing" component={Pricing} />
-      <Route path="/auth" component={Auth} />
+      <Route path="/book-demo" component={BookDemo} />
       <Route component={NotFound} />
     </Switch>
   );
