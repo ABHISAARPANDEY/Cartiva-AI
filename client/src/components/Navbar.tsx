@@ -11,7 +11,7 @@ export function Navbar() {
     <>
       <Link href="/#features" className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">Features</Link>
       <Link href="/how-it-works" className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">How it Works</Link>
-      <a href="#integrations" className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">Integrations</a>
+      <Link href="/integrations" className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">Integrations</Link>
       <a href="#pricing" className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">Pricing</a>
     </>
   );
