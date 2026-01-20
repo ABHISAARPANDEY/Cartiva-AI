@@ -23,18 +23,18 @@ export function CTA() {
 
           <div className="relative z-10 max-w-3xl mx-auto">
             <h2 className="text-3xl md:text-5xl font-heading font-bold text-white mb-6">
-              Ready to automate your growth?
+              Start Automating Your Growth Today
             </h2>
             <p className="text-primary-foreground/90 text-lg md:text-xl mb-10 max-w-2xl mx-auto">
-              Join 500+ D2C brands using Cartiva AI to scale support and sales without increasing headcount.
+              Connect your Shopify store in minutes and let AI handle your support, recover carts, and close sales 24/7.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" variant="secondary" className="h-14 px-8 text-lg font-semibold text-primary bg-white hover:bg-white/90">
-                Book a Live Demo
+                Book My Free Demo
               </Button>
               <Button size="lg" className="h-14 px-8 text-lg font-semibold bg-primary-foreground/10 text-white hover:bg-primary-foreground/20 border border-white/20">
-                Join Waitlist
+                Join the Waitlist
               </Button>
             </div>
           </div>

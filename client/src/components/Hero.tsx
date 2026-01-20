@@ -37,12 +37,12 @@ export function Hero() {
               className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary w-fit border border-primary/20"
             >
               <Sparkles size={14} className="animate-pulse" />
-              <span className="text-[10px] font-bold uppercase tracking-wider">New: WhatsApp Flows Support</span>
+              <span className="text-[10px] font-bold uppercase tracking-wider">Setup in under 10 minutes</span>
             </motion.div>
             
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-heading font-extrabold leading-[1.05] text-foreground tracking-tight">
-              Automate Support & <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary to-accent animate-gradient-x">Boost Sales</span> with AI
+              Scale Your Brand <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary to-accent animate-gradient-x">Without Scaling Support</span>
             </h1>
             
             <motion.p 
@@ -51,7 +51,7 @@ export function Hero() {
               transition={{ delay: 0.4, duration: 0.8 }}
               className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-xl"
             >
-              Increase conversions and reduce support workload by 70% with an AI agent that lives on WhatsApp and your website.
+              Turn WhatsApp into your highest-converting sales channel. Automate 70% of support and recover abandoned carts with an AI agent built for Shopify.
             </motion.p>
 
             <motion.div 
@@ -61,12 +61,12 @@ export function Hero() {
               className="flex flex-col sm:flex-row gap-4 mt-4"
             >
               <Button size="lg" className="h-14 px-8 text-base bg-primary hover:bg-primary/90 shadow-2xl shadow-primary/30 group">
-                Start Free Trial
+                Book My Demo
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Button>
               <Button size="lg" variant="outline" className="h-14 px-8 text-base border-primary/20 hover:bg-primary/5 group">
                 <MessageSquareText className="mr-2 h-4 w-4 transition-transform group-hover:scale-110" />
-                See Live Demo
+                See Live Examples
               </Button>
             </motion.div>
             
@@ -89,7 +89,7 @@ export function Hero() {
                   </motion.div>
                 ))}
               </div>
-              <p className="font-medium">Trusted by <span className="text-foreground font-bold">500+</span> D2C brands</p>
+              <p className="font-medium text-foreground">Trusted by <span className="font-bold">500+</span> Shopify store owners</p>
             </motion.div>
           </motion.div>
 
@@ -102,13 +102,10 @@ export function Hero() {
             <div className="relative rounded-3xl overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.25)] border border-white/20 bg-white/5 backdrop-blur-sm group">
               <img 
                 src={heroImage} 
-                alt="AI Network Visualization" 
+                alt="AI Sales & Support Platform" 
                 className="w-full h-auto object-cover transform group-hover:scale-110 transition-transform duration-[2s] ease-out"
               />
               <div className="absolute inset-0 bg-gradient-to-tr from-primary/30 to-transparent mix-blend-overlay pointer-events-none" />
-              
-              {/* Glass decorative element */}
-              <div className="absolute top-4 right-4 w-24 h-24 bg-white/10 backdrop-blur-md rounded-full border border-white/20 animate-pulse" />
             </div>
             
             {/* Floating Card 1 */}
@@ -150,7 +147,7 @@ export function Hero() {
               <div className="w-8 h-8 rounded-lg bg-white/20 flex items-center justify-center">
                 <Sparkles size={16} />
               </div>
-              <p className="text-sm font-bold">AI Active Now</p>
+              <p className="text-sm font-bold">70% Support Automated</p>
             </motion.div>
           </motion.div>
         </div>

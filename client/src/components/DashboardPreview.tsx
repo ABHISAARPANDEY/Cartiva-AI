@@ -20,7 +20,7 @@ export function DashboardPreview() {
             >
                <img 
                 src={dashboardImage} 
-                alt="Cartiva Dashboard" 
+                alt="AI Sales Dashboard" 
                 className="w-full h-auto rounded-lg"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/10 to-transparent pointer-events-none" />
@@ -40,7 +40,7 @@ export function DashboardPreview() {
               viewport={{ once: true }}
               className="text-3xl md:text-4xl font-heading font-bold mb-6 tracking-tight"
             >
-              Real-time insights at your fingertips
+              Real-Time ROI Tracking
             </motion.h2>
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
@@ -49,15 +49,15 @@ export function DashboardPreview() {
               transition={{ delay: 0.1 }}
               className="text-lg text-muted-foreground mb-8 leading-relaxed"
             >
-              Track every conversation, sale, and support ticket in one unified dashboard. See exactly how much revenue AI is generating for your brand.
+              Stop guessing. See exactly how many sales your AI agent is closing and how many support hours it's saving your team every day.
             </motion.p>
 
             <ul className="space-y-4">
               {[
-                "Monitor conversation volume and resolution rates",
-                "Track revenue recovered from abandoned carts",
-                "Analyze customer sentiment in real-time",
-                "View operational savings and ROI instantly"
+                "Track automated sales & recovered revenue",
+                "Monitor 24/7 resolution rates & response times",
+                "Measure customer sentiment on every chat",
+                "Calculate total support cost savings instantly"
               ].map((item, i) => (
                 <motion.li 
                   key={i}

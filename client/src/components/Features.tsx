@@ -11,33 +11,33 @@ import {
 const features = [
   {
     icon: <MessageCircle className="w-6 h-6" />,
-    title: "Instant WhatsApp Support",
-    description: "Handle order tracking, delivery updates, and common queries automatically 24/7."
+    title: "Instant AI Responses",
+    description: "Reply to customers in seconds on WhatsApp and Web Chat. 24/7 coverage for FAQs, status, and sales."
   },
   {
     icon: <RefreshCw className="w-6 h-6" />,
-    title: "Returns & Refunds",
-    description: "Automate the return process with smart eligibility checks and instant labels."
+    title: "Automated Returns & Tracking",
+    description: "Deflect 70% of support tickets by automating order tracking, return requests, and refund status."
   },
   {
     icon: <ShoppingBag className="w-6 h-6" />,
-    title: "Abandoned Cart Recovery",
-    description: "Send personalized reminders on WhatsApp to recover lost sales instantly."
+    title: "Cart Recovery on WhatsApp",
+    description: "Automatically message customers on WhatsApp to recover lost sales and boost conversion rates."
   },
   {
     icon: <TrendingUp className="w-6 h-6" />,
-    title: "Smart Upselling",
-    description: "Recommend products based on customer history and preferences during chat."
+    title: "Smart Upsell Agent",
+    description: "Let AI recommend products based on chat history to increase your Average Order Value (AOV)."
   },
   {
     icon: <Languages className="w-6 h-6" />,
-    title: "Multilingual AI",
-    description: "Speak your customer's language. Support for English, Hindi, and regional dialects."
+    title: "Hindi & English Support",
+    description: "Built for Indian D2C brands. Native support for English, Hindi, and regional dialects."
   },
   {
-    icon: <Clock className="w-6 h-6" />,
-    title: "10-Minute Setup",
-    description: "Plug-and-play integration with Shopify. No coding required."
+    icon: <Clock className="w-12 h-12" />,
+    title: "Plug-and-Play Setup",
+    description: "Connect your Shopify store and go live in under 10 minutes. No technical team required."
   }
 ];
 
@@ -75,9 +75,9 @@ export function Features() {
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4 tracking-tight">Everything you need to scale</h2>
+          <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4 tracking-tight">Everything You Need to Scale Fast</h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            Cartiva AI replaces your manual support tasks with intelligent automation, letting you focus on growth.
+            Cartiva AI replaces manual tasks with intelligent automation, turning your support team into a revenue engine.
           </p>
         </motion.div>
 
