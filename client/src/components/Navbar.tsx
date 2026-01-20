@@ -1,9 +1,8 @@
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Bot, Menu, X } from "lucide-react";
 import { useState } from "react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import logo from "@assets/logo_1768935821044.png";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,11 +19,12 @@ export function Navbar() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50 supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2 group">
-          <div className="h-8 flex items-center">
-            <img src={logo} alt="Cartiva AI Logo" className="h-full w-auto object-contain" />
+        <div className="flex items-center gap-2">
+          <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-primary-foreground">
+            <Bot size={20} />
           </div>
-        </Link>
+          <span className="font-heading font-bold text-xl tracking-tight text-foreground">Cartiva AI</span>
+        </div>
 
         <div className="hidden md:flex items-center gap-8">
           <NavLinks />

@@ -4,8 +4,7 @@ import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { ArrowRight, Github, Mail, Sparkles } from "lucide-react";
-import logo from "@assets/logo_1768935821044.png";
+import { Bot, ArrowRight, Github, Mail, Sparkles } from "lucide-react";
 
 export default function AuthPage() {
   const [isLogin, setIsLogin] = useState(true);
@@ -28,9 +27,10 @@ export default function AuthPage() {
         >
           <div className="flex flex-col gap-2">
             <Link href="/" className="flex items-center gap-2 w-fit mb-4 hover:opacity-80 transition-opacity">
-              <div className="h-8">
-                <img src={logo} alt="Cartiva AI Logo" className="h-full w-auto object-contain" />
+              <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-primary-foreground">
+                <Bot size={20} />
               </div>
+              <span className="font-heading font-bold text-xl tracking-tight">Cartiva AI</span>
             </Link>
             <h1 className="text-3xl font-heading font-bold">
               {isLogin ? "Welcome back" : "Scale your brand"}
@@ -117,11 +117,12 @@ export default function AuthPage() {
         </div>
 
         <div className="relative z-10 flex flex-col h-full">
-          <Link href="/" className="flex items-center gap-2 mb-auto hover:opacity-80 transition-opacity">
-            <div className="h-10">
-              <img src={logo} alt="Cartiva AI Logo" className="h-full w-auto object-contain brightness-0 invert" />
+          <div className="flex items-center gap-2 mb-auto">
+            <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center">
+              <Bot size={24} />
             </div>
-          </Link>
+            <span className="font-heading font-bold text-2xl tracking-tight">Cartiva AI</span>
+          </div>
 
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
