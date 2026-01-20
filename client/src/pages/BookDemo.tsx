@@ -7,11 +7,11 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { CheckCircle2, Calendar, Clock, Globe } from "lucide-react";
-import { useState } from "react";
+import * as React from "react";
 import { useToast } from "@/hooks/use-toast";
 
 export default function BookDemo() {
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitted, setIsSubmitted] = React.useState(false);
   const { toast } = useToast();
 
   const handleSubmit = (e: React.FormEvent) => {
