@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import { Link } from "wouter";
 
 export function CTA() {
   return (
@@ -30,9 +31,11 @@ export function CTA() {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" variant="secondary" className="h-14 px-8 text-lg font-semibold text-primary bg-white hover:bg-white/90">
-                Book My Free Demo
-              </Button>
+              <Link href="/book-demo">
+                <Button size="lg" variant="secondary" className="h-14 px-8 text-lg font-semibold text-primary bg-white hover:bg-white/90">
+                  Book My Free Demo
+                </Button>
+              </Link>
               <Button size="lg" className="h-14 px-8 text-lg font-semibold bg-primary-foreground/10 text-white hover:bg-primary-foreground/20 border border-white/20">
                 Join the Waitlist
               </Button>

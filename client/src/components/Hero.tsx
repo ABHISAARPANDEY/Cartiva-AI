@@ -3,6 +3,7 @@ import { ArrowRight, MessageSquareText, Sparkles } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import heroImage from "@assets/generated_images/abstract_ai_ecommerce_network_visualization.png";
 import { useRef } from "react";
+import { Link } from "wouter";
 
 export function Hero() {
   const containerRef = useRef(null);
@@ -37,7 +38,7 @@ export function Hero() {
               className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary w-fit border border-primary/20"
             >
               <Sparkles size={14} className="animate-pulse" />
-              <span className="text-[10px] font-bold uppercase tracking-wider">Works on any website or WhatsApp</span>
+              <span className="text-[10px] font-bold uppercase tracking-wider">Website • WhatsApp • Voice Calls</span>
             </motion.div>
             
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-heading font-extrabold leading-[1.05] text-foreground tracking-tight">
@@ -51,7 +52,7 @@ export function Hero() {
               transition={{ delay: 0.4, duration: 0.8 }}
               className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-xl"
             >
-              Deploy an AI agent that captures leads, closes sales, and handles support 24/7. Turn every visitor into a customer on your website and WhatsApp.
+              Deploy an AI agent that captures leads, closes sales, and handles support 24/7 via chat, WhatsApp, and voice calls. Turn every visitor into a customer.
             </motion.p>
 
             <motion.div 
@@ -60,10 +61,12 @@ export function Hero() {
               transition={{ delay: 0.6, duration: 0.5 }}
               className="flex flex-col sm:flex-row gap-4 mt-4"
             >
-              <Button size="lg" className="h-14 px-8 text-base bg-primary hover:bg-primary/90 shadow-2xl shadow-primary/30 group">
-                Book My Free Demo
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Button>
+              <Link href="/book-demo">
+                <Button size="lg" className="h-14 px-8 text-base bg-primary hover:bg-primary/90 shadow-2xl shadow-primary/30 group">
+                  Book My Free Demo
+                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </Button>
+              </Link>
               <Button size="lg" variant="outline" className="h-14 px-8 text-base border-primary/20 hover:bg-primary/5 group">
                 <MessageSquareText className="mr-2 h-4 w-4 transition-transform group-hover:scale-110" />
                 See AI in Action

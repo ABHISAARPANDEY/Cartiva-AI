@@ -6,21 +6,78 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { CheckCircle2, Calendar, Clock, Globe } from "lucide-react";
+import { CheckCircle2, Calendar, Clock, Globe, Loader2 } from "lucide-react";
 import * as React from "react";
 import { useToast } from "@/hooks/use-toast";
 
+interface FormData {
+  firstName: string;
+  lastName: string;
+  email: string;
+  website: string;
+  industry: string;
+  message: string;
+}
+
 export default function BookDemo() {
   const [isSubmitted, setIsSubmitted] = React.useState(false);
+  const [isLoading, setIsLoading] = React.useState(false);
+  const [formData, setFormData] = React.useState<FormData>({
+    firstName: "",
+    lastName: "",
+    email: "",
+    website: "",
+    industry: "",
+    message: "",
+  });
   const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { id, value } = e.target;
+    const fieldMap: Record<string, keyof FormData> = {
+      "first-name": "firstName",
+      "last-name": "lastName",
+      "email": "email",
+      "website": "website",
+      "message": "message",
+    };
+    const field = fieldMap[id] || id;
+    setFormData(prev => ({ ...prev, [field]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitted(true);
-    toast({
-      title: "Demo Request Sent!",
-      description: "We'll reach out within 24 hours to schedule your session.",
-    });
+    setIsLoading(true);
+
+    try {
+      const response = await fetch("/api/demo-request", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to submit request");
+      }
+
+      setIsSubmitted(true);
+      toast({
+        title: "Demo Request Sent!",
+        description: "We'll reach out within 24 hours to schedule your session.",
+      });
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: error instanceof Error ? error.message : "Failed to submit request. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -113,24 +170,53 @@ export default function BookDemo() {
                       <div className="grid sm:grid-cols-2 gap-4">
                         <div className="space-y-2">
                           <Label htmlFor="first-name">First Name</Label>
-                          <Input id="first-name" placeholder="John" required />
+                          <Input 
+                            id="first-name" 
+                            placeholder="John" 
+                            required 
+                            value={formData.firstName}
+                            onChange={handleInputChange}
+                          />
                         </div>
                         <div className="space-y-2">
                           <Label htmlFor="last-name">Last Name</Label>
-                          <Input id="last-name" placeholder="Doe" required />
+                          <Input 
+                            id="last-name" 
+                            placeholder="Doe" 
+                            required 
+                            value={formData.lastName}
+                            onChange={handleInputChange}
+                          />
                         </div>
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="email">Work Email</Label>
-                        <Input id="email" type="email" placeholder="john@company.com" required />
+                        <Input 
+                          id="email" 
+                          type="email" 
+                          placeholder="john@company.com" 
+                          required 
+                          value={formData.email}
+                          onChange={handleInputChange}
+                        />
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="website">Website URL</Label>
-                        <Input id="website" placeholder="https://example.com" required />
+                        <Input 
+                          id="website" 
+                          placeholder="https://example.com" 
+                          required 
+                          value={formData.website}
+                          onChange={handleInputChange}
+                        />
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="industry">Industry</Label>
-                        <Select required onValueChange={() => {}}>
+                        <Select 
+                          required 
+                          value={formData.industry}
+                          onValueChange={(value) => setFormData(prev => ({ ...prev, industry: value }))}
+                        >
                           <SelectTrigger>
                             <SelectValue placeholder="Select industry" />
                           </SelectTrigger>
@@ -145,10 +231,27 @@ export default function BookDemo() {
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="message">Anything else?</Label>
-                        <Textarea id="message" placeholder="Tell us about your goals..." className="h-24" />
+                        <Textarea 
+                          id="message" 
+                          placeholder="Tell us about your goals..." 
+                          className="h-24" 
+                          value={formData.message}
+                          onChange={handleInputChange}
+                        />
                       </div>
-                      <Button type="submit" className="w-full h-12 text-lg font-bold shadow-xl shadow-primary/20">
-                        Book My Demo
+                      <Button 
+                        type="submit" 
+                        className="w-full h-12 text-lg font-bold shadow-xl shadow-primary/20"
+                        disabled={isLoading}
+                      >
+                        {isLoading ? (
+                          <>
+                            <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                            Submitting...
+                          </>
+                        ) : (
+                          "Book My Demo"
+                        )}
                       </Button>
                       <p className="text-[10px] text-center text-muted-foreground">
                         By submitting, you agree to our Privacy Policy and Terms of Service.

@@ -5,6 +5,10 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 
+import step1Image from "@/assets/info7.png";
+import step2Image from "@/assets/info8.png";
+import step3Image from "@/assets/info9.png";
+
 const steps = [
   {
     icon: <Globe className="w-8 h-8" />,
@@ -15,29 +19,32 @@ const steps = [
       "Real-time data sync",
       "Automatic content indexing",
       "Secure API connection"
-    ]
+    ],
+    image: step1Image
   },
   {
     icon: <MessageSquare className="w-8 h-8" />,
     title: "Customize Your AI Agent",
-    description: "Train your agent on your knowledge base and define its personality to match your brand's unique voice.",
+    description: "Train your agent on your knowledge base and define its personality to match your brand's unique voice across all channels.",
     details: [
       "Custom brand personality",
-      "Instant FAQ training",
-      "WhatsApp & Web Chat setup",
+      "WhatsApp, Web Chat & Voice setup",
+      "AI Voice Agent configuration",
       "Lead qualification rules"
-    ]
+    ],
+    image: step2Image
   },
   {
     icon: <Rocket className="w-8 h-8" />,
     title: "Go Live & Scale Revenue",
-    description: "Activate your agent and watch it handle 70% of conversations while proactively closing sales and capturing leads.",
+    description: "Activate your agent across chat, WhatsApp, and voice calls. Watch it handle 70% of conversations while closing sales 24/7.",
     details: [
-      "Instant response times",
-      "Automated lead capture",
+      "Instant response on all channels",
+      "Voice & chat lead capture",
       "Multilingual support",
       "Full ROI dashboard"
-    ]
+    ],
+    image: step3Image
   }
 ];
 
@@ -93,16 +100,27 @@ export default function HowItWorks() {
                 <div className="flex-1 w-full max-w-xl">
                   <motion.div 
                     whileHover={{ scale: 1.02 }}
-                    className="aspect-square lg:aspect-video rounded-3xl bg-secondary/50 border border-border flex items-center justify-center p-8 relative overflow-hidden group shadow-2xl"
+                    className="aspect-square lg:aspect-video rounded-3xl bg-secondary/50 border border-border flex items-center justify-center relative overflow-hidden group shadow-2xl"
                   >
-                    {/* Placeholder for actual product UI screenshots */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-50" />
-                    <div className="text-center space-y-4 relative z-10">
-                       <div className="text-4xl font-bold text-muted-foreground/20 uppercase tracking-widest group-hover:text-primary/20 transition-colors">
-                        Step 0{index + 1}
-                       </div>
-                       <p className="text-sm font-medium text-muted-foreground">Illustration of {step.title} Interface</p>
-                    </div>
+                    {step.image ? (
+                      <img 
+                        src={step.image} 
+                        alt={`${step.title} illustration`}
+                        className="w-full h-full object-contain"
+                        loading="eager"
+                        decoding="async"
+                      />
+                    ) : (
+                      <>
+                        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-50" />
+                        <div className="text-center space-y-4 relative z-10 p-8">
+                          <div className="text-4xl font-bold text-muted-foreground/20 uppercase tracking-widest group-hover:text-primary/20 transition-colors">
+                            Step 0{index + 1}
+                          </div>
+                          <p className="text-sm font-medium text-muted-foreground">Illustration of {step.title} Interface</p>
+                        </div>
+                      </>
+                    )}
                   </motion.div>
                 </div>
               </motion.div>
@@ -124,10 +142,12 @@ export default function HowItWorks() {
                 Join 500+ businesses using Cartiva AI to grow revenue and scale support without increasing headcount.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="h-14 px-8 text-lg bg-primary hover:bg-primary/90">
-                  Book My Free Demo
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
+                <Link href="/book-demo">
+                  <Button size="lg" className="h-14 px-8 text-lg bg-primary hover:bg-primary/90">
+                    Book My Free Demo
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Button>
+                </Link>
                 <Button size="lg" variant="outline" className="h-14 px-8 text-lg border-white/10 hover:bg-white/5">
                   See Case Studies
                 </Button>

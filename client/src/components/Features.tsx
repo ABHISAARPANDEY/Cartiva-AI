@@ -7,39 +7,40 @@ import {
   Languages, 
   Zap,
   Target,
-  Clock
+  Clock,
+  Phone
 } from "lucide-react";
 
 const features = [
   {
     icon: <MessageCircle className="w-6 h-6" />,
     title: "24/7 Instant Engagement",
-    description: "Reply to every query instantly on WhatsApp and your website. Never lose a lead to slow response times again."
+    description: "Reply to every query instantly on WhatsApp, website chat, and voice calls. Never lose a lead to slow response times again."
+  },
+  {
+    icon: <Phone className="w-6 h-6" />,
+    title: "AI Voice Agent",
+    description: "Handle inbound and outbound calls with our intelligent voice agent. Natural conversations that qualify leads and close sales over the phone."
   },
   {
     icon: <Target className="w-6 h-6" />,
     title: "Lead Qualification AI",
-    description: "Automatically qualify leads, book meetings, and capture data. Focus your team's time only on high-value prospects."
+    description: "Automatically qualify leads, book meetings, and capture data via chat or voice. Focus your team's time only on high-value prospects."
   },
   {
     icon: <TrendingUp className="w-6 h-6" />,
     title: "Sales & Upsell Automation",
-    description: "Close more sales with an AI that proactively recommends products and recovers abandoned carts via WhatsApp."
+    description: "Close more sales with an AI that proactively recommends products and recovers abandoned carts via WhatsApp and voice calls."
   },
   {
     icon: <RefreshCw className="w-6 h-6" />,
     title: "Smart Support Deflection",
-    description: "Automate up to 70% of repetitive questions, order tracking, and service requests without hiring more staff."
+    description: "Automate up to 70% of repetitive questions, order tracking, and service requests across chat and voice without hiring more staff."
   },
   {
     icon: <Zap className="w-6 h-6" />,
     title: "Universal Integration",
-    description: "Works on any website—Shopify, WooCommerce, custom builds, or service pages. Setup in under 10 minutes."
-  },
-  {
-    icon: <Clock className="w-6 h-6" />,
-    title: "Plug-and-Play Setup",
-    description: "Simply connect your data and go live. No complex coding, no technical jargon, just immediate results."
+    description: "Works on any website—Shopify, WooCommerce, custom builds—plus WhatsApp and phone systems. Setup in under 10 minutes."
   }
 ];
 
