@@ -19,47 +19,34 @@ import {
   Phone
 } from "lucide-react";
 
-import reales1Image from "@/assets/reales1.png";
-import reales2Image from "@/assets/reales2.png";
-import reales3Image from "@/assets/reales3.png";
-import reales4Image from "@/assets/reales4.png";
-import realessol1Image from "@/assets/realessol1.png";
-import realessol2Image from "@/assets/realessol2.png";
-import realessol3Image from "@/assets/realessol3.png";
-import realessol4Image from "@/assets/realessol4.png";
-
 const problems = [
   {
     icon: <PhoneOff className="w-6 h-6" />,
     title: "Missed Lead Inquiries",
     description: "Potential buyers inquire at all hours. Missing these calls or delayed responses means losing them to competitors who respond first.",
     stat: "78%",
-    statLabel: "leads go to first responder",
-    image: reales2Image
+    statLabel: "leads go to first responder"
   },
   {
     icon: <Clock className="w-6 h-6" />,
     title: "Time-Consuming Lead Qualification",
     description: "Agents spend hours qualifying leads manually, only to find many aren't serious buyers or don't meet financing criteria.",
     stat: "60%",
-    statLabel: "of leads are unqualified",
-    image: reales1Image
+    statLabel: "of leads are unqualified"
   },
   {
     icon: <Calendar className="w-6 h-6" />,
     title: "Scheduling Chaos",
     description: "Coordinating property viewings between buyers, sellers, and agents creates endless back-and-forth communication.",
     stat: "5hrs",
-    statLabel: "weekly on scheduling",
-    image: reales4Image
+    statLabel: "weekly on scheduling"
   },
   {
     icon: <Users className="w-6 h-6" />,
     title: "Repetitive Property Questions",
     description: "Agents answer the same questions about listings repeatedly - price, location, amenities, availability - consuming valuable time.",
     stat: "40%",
-    statLabel: "time on repetitive Q&A",
-    image: reales3Image
+    statLabel: "time on repetitive Q&A"
   }
 ];
 
@@ -68,29 +55,25 @@ const solutions = [
     icon: <MessageSquare className="w-6 h-6" />,
     title: "24/7 Lead Capture & Response",
     description: "Never miss a lead again. AI agent responds instantly to property inquiries via WhatsApp, website chat, or voice calls, any time of day.",
-    benefits: ["Chat & voice support", "Capture leads while you sleep", "78% higher conversion rate"],
-    image: realessol1Image
+    benefits: ["Chat & voice support", "Capture leads while you sleep", "78% higher conversion rate"]
   },
   {
     icon: <Zap className="w-6 h-6" />,
     title: "Automated Lead Qualification",
     description: "AI asks the right questions to qualify leads based on budget, timeline, financing status, and property preferences.",
-    benefits: ["Pre-qualified leads only", "Custom qualification criteria", "Save 10+ hours weekly"],
-    image: realessol4Image
+    benefits: ["Pre-qualified leads only", "Custom qualification criteria", "Save 10+ hours weekly"]
   },
   {
     icon: <Calendar className="w-6 h-6" />,
     title: "Smart Viewing Scheduler",
     description: "AI handles the entire scheduling process, finding times that work for all parties and sending automatic reminders.",
-    benefits: ["Zero scheduling conflicts", "Automatic reminders", "Calendar integration"],
-    image: realessol2Image
+    benefits: ["Zero scheduling conflicts", "Automatic reminders", "Calendar integration"]
   },
   {
     icon: <CheckCircle2 className="w-6 h-6" />,
     title: "Instant Property Information",
     description: "AI provides detailed property information, neighborhood insights, and pricing instantly from your listing database.",
-    benefits: ["Answer any property question", "Multilingual support", "Always accurate and updated"],
-    image: realessol3Image
+    benefits: ["Answer any property question", "Multilingual support", "Always accurate and updated"]
   }
 ];
 
@@ -105,8 +88,8 @@ const integrations = [
 
 export default function RealEstateIndustry() {
   return (
-    <div className="min-h-screen bg-background">
-      <Navbar />
+    <div className="min-h-screen bg-transparent overflow-visible">
+      <Navbar variant="dark" />
       
       <main className="pt-32 pb-20">
         {/* Hero Section */}
@@ -150,7 +133,7 @@ export default function RealEstateIndustry() {
               className="text-center max-w-3xl mx-auto mb-16"
             >
               <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6">
-                The <span className="text-destructive">Challenges</span> Real Estate Agents Face
+                The <span className="text-red-400">Challenges</span> Real Estate Agents Face
               </h2>
               <p className="text-lg text-muted-foreground">
                 These pain points are preventing agents from closing more deals and scaling their business.
@@ -167,29 +150,23 @@ export default function RealEstateIndustry() {
                   transition={{ delay: index * 0.1 }}
                   className="flex flex-col rounded-2xl bg-background border border-border overflow-hidden"
                 >
-                  {/* Problem Infographic - Top */}
-                  <div className="w-full h-56 bg-gradient-to-br from-secondary/50 to-secondary/30 flex items-center justify-center p-4">
-                    <img 
-                      src={problem.image} 
-                      alt={`${problem.title} infographic`}
-                      className="w-full h-full object-contain"
-                      loading="lazy"
-                    />
-                  </div>
-                  
-                  {/* Content - Bottom */}
-                  <div className="p-6">
-                    <div className="flex items-start justify-between gap-4 mb-4">
-                      <div className="w-12 h-12 rounded-xl bg-destructive/10 text-destructive flex items-center justify-center shrink-0">
-                        {problem.icon}
+                  <div className="p-6 flex flex-col gap-4">
+                    <div className="w-full h-40 rounded-2xl bg-gradient-to-br from-red-500/15 via-background to-secondary/20 border border-red-400/40 flex items-center justify-between px-5 py-4">
+                      <div className="flex items-center gap-3">
+                        <div className="w-12 h-12 rounded-xl bg-red-500/20 text-red-300 flex items-center justify-center shrink-0">
+                          {problem.icon}
+                        </div>
+                        <div>
+                          <p className="text-xs uppercase tracking-[0.18em] text-red-300/90">Impact</p>
+                          <p className="text-2xl font-extrabold text-red-300">{problem.stat}</p>
+                        </div>
                       </div>
-                      <div className="flex items-baseline gap-2">
-                        <span className="text-3xl font-bold text-destructive">{problem.stat}</span>
-                        <span className="text-sm text-muted-foreground">{problem.statLabel}</span>
-                      </div>
+                      <p className="text-xs text-red-200 font-medium max-w-[140px] text-right">
+                        {problem.statLabel}
+                      </p>
                     </div>
-                    <h3 className="text-xl font-heading font-bold mb-3">{problem.title}</h3>
-                    <p className="text-muted-foreground leading-relaxed">{problem.description}</p>
+                    <h3 className="text-xl font-heading font-bold mb-1">{problem.title}</h3>
+                    <p className="text-muted-foreground leading-relaxed text-sm">{problem.description}</p>
                   </div>
                 </motion.div>
               ))}
@@ -240,14 +217,27 @@ export default function RealEstateIndustry() {
                     </ul>
                   </div>
                   
-                  {/* Solution Infographic */}
-                  <div className="flex-1 w-full max-w-lg rounded-2xl bg-gradient-to-br from-primary/5 to-secondary/50 p-6 flex items-center justify-center">
-                    <img 
-                      src={solution.image} 
-                      alt={`${solution.title} infographic`}
-                      className="w-full h-auto max-h-80 object-contain"
-                      loading="lazy"
-                    />
+                  <div className="flex-1 w-full max-w-lg rounded-2xl bg-gradient-to-br from-primary/5 to-secondary/50 p-6 flex flex-col justify-between gap-4">
+                    <div className="flex items-center justify-between text-xs text-muted-foreground">
+                      <span className="uppercase tracking-[0.18em] text-primary/80">Outcome</span>
+                      <span className="px-2 py-1 rounded-full bg-primary/10 text-primary font-semibold text-[10px]">
+                        Designed for top brokers
+                      </span>
+                    </div>
+                    <div className="grid grid-cols-3 gap-3 text-xs text-muted-foreground">
+                      <div className="rounded-xl bg-background/70 border border-border/60 p-3 space-y-1">
+                        <p className="font-semibold text-foreground text-[11px]">Workflow</p>
+                        <p>{solution.title.includes("Lead Capture") ? "Capture and respond to every inquiry instantly." : solution.title.includes("Automated Lead Qualification") ? "Filter out low-intent leads automatically." : solution.title.includes("Smart Viewing Scheduler") ? "Coordinate calendars without back-and-forth." : "Instant answers on price, location and amenities."}</p>
+                      </div>
+                      <div className="rounded-xl bg-background/70 border border-border/60 p-3 space-y-1">
+                        <p className="font-semibold text-foreground text-[11px]">Channel</p>
+                        <p>{solution.title.includes("Lead Capture") ? "Web, WhatsApp & voice" : "Omnichannel"}</p>
+                      </div>
+                      <div className="rounded-xl bg-background/70 border border-border/60 p-3 space-y-1">
+                        <p className="font-semibold text-foreground text-[11px]">Metric</p>
+                        <p>{solution.title.includes("Lead Capture") ? "78% higher conversion" : solution.title.includes("Automated Lead Qualification") ? "10+ hours saved weekly" : solution.title.includes("Smart Viewing Scheduler") ? "Zero double-bookings" : "40% less time on Q&A"}</p>
+                      </div>
+                    </div>
                   </div>
                 </motion.div>
               ))}

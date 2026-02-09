@@ -1,10 +1,9 @@
 import { motion } from "framer-motion";
-import info6 from "@assets/info6_1768935965844.png";
 import { Check } from "lucide-react";
 
 export function DashboardPreview() {
   return (
-    <section className="py-20 overflow-hidden">
+    <section className="py-20 bg-black/50 overflow-visible">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <motion.div 
@@ -15,15 +14,59 @@ export function DashboardPreview() {
             className="order-2 lg:order-1 perspective-1000"
           >
             <motion.div 
-              whileHover={{ rotateY: 5, rotateX: 2 }}
-              className="relative rounded-xl overflow-hidden shadow-2xl border border-border bg-slate-50 dark:bg-slate-900 p-2 transition-transform duration-500"
+              whileHover={{ rotateY: 5, rotateX: 2, scale: 1.01 }}
+              className="relative rounded-3xl overflow-hidden shadow-[0_40px_80px_-30px_rgba(15,23,42,0.8)] border border-border/80 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 p-4 transition-transform duration-500 flex flex-col gap-4"
             >
-               <img 
-                src={info6} 
-                alt="Real-Time ROI Dashboard" 
-                className="w-full h-auto rounded-lg"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/10 to-transparent pointer-events-none" />
+              <div className="mb-1 flex items-center justify-between gap-2 text-xs text-slate-200">
+                <div className="inline-flex items-center gap-2">
+                  <span className="inline-flex h-6 items-center rounded-full bg-emerald-500/10 px-3 text-emerald-300 font-medium">
+                    +27% Revenue from AI
+                  </span>
+                  <span className="hidden md:inline text-slate-400">
+                    Last 30 days · All channels
+                  </span>
+                </div>
+                <div className="flex items-center gap-1 text-[10px] text-slate-400">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                  Live
+                </div>
+              </div>
+              <div className="grid grid-cols-3 gap-3 text-slate-100 text-xs">
+                <div className="rounded-xl bg-slate-900/80 border border-slate-700 p-3 space-y-1">
+                  <p className="uppercase tracking-[0.18em] text-[10px] text-slate-400">Automated Chats</p>
+                  <p className="text-2xl font-bold text-emerald-400">70%</p>
+                  <p className="text-[11px] text-slate-400">Handled without human agents.</p>
+                </div>
+                <div className="rounded-xl bg-slate-900/80 border border-slate-700 p-3 space-y-1">
+                  <p className="uppercase tracking-[0.18em] text-[10px] text-slate-400">Leads Qualified</p>
+                  <p className="text-2xl font-bold text-primary">2,840</p>
+                  <p className="text-[11px] text-slate-400">Across web & WhatsApp.</p>
+                </div>
+                <div className="rounded-xl bg-slate-900/80 border border-slate-700 p-3 space-y-1">
+                  <p className="uppercase tracking-[0.18em] text-[10px] text-slate-400">CSAT</p>
+                  <p className="text-2xl font-bold text-amber-300">4.9</p>
+                  <p className="text-[11px] text-slate-400">Average rating.</p>
+                </div>
+              </div>
+              <div className="mt-1 h-32 rounded-2xl bg-slate-900/80 border border-slate-700 p-4 flex flex-col justify-between">
+                <div className="flex items-center justify-between text-[11px] text-slate-400 mb-2">
+                  <span>Daily AI-led revenue</span>
+                  <span>Last 14 days</span>
+                </div>
+                <div className="relative h-16">
+                  <div className="absolute inset-x-0 bottom-0 h-[1px] bg-slate-700/80" />
+                  <div className="absolute inset-y-0 left-0 w-[1px] bg-slate-700/80" />
+                  <div className="absolute inset-2 flex items-end gap-1">
+                    {[40, 55, 48, 70, 65, 80, 76, 90, 84, 95, 100, 88, 92, 98].map((value, index) => (
+                      <div
+                        key={index}
+                        className="flex-1 rounded-t-full bg-gradient-to-t from-primary/30 via-primary/70 to-emerald-400"
+                        style={{ height: `${value}%` }}
+                      />
+                    ))}
+                  </div>
+                </div>
+              </div>
             </motion.div>
           </motion.div>
 

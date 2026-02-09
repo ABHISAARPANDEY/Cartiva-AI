@@ -19,47 +19,34 @@ import {
   Phone
 } from "lucide-react";
 
-import fi1Image from "@/assets/fi1.png";
-import fi2Image from "@/assets/fi2.png";
-import fi3Image from "@/assets/fi3.png";
-import fi4Image from "@/assets/fi4.png";
-import fisol1Image from "@/assets/fisol1.png";
-import fisol2Image from "@/assets/fisol2.png";
-import fisol3Image from "@/assets/fisol3.png";
-import fisol4Image from "@/assets/fisol4.png";
-
 const problems = [
   {
     icon: <Clock className="w-6 h-6" />,
     title: "Slow Loan Application Process",
     description: "Traditional loan applications take days or weeks. Customers expect instant decisions and get frustrated with lengthy processes.",
     stat: "67%",
-    statLabel: "abandon slow applications",
-    image: fi3Image
+    statLabel: "abandon slow applications"
   },
   {
     icon: <FileText className="w-6 h-6" />,
     title: "High Volume of Repetitive Queries",
     description: "Support teams spend most of their time answering the same questions about rates, eligibility, and account balances.",
     stat: "70%",
-    statLabel: "queries are repetitive",
-    image: fi4Image
+    statLabel: "queries are repetitive"
   },
   {
     icon: <Shield className="w-6 h-6" />,
     title: "Compliance & Security Concerns",
     description: "Financial institutions must maintain strict compliance while still providing fast, efficient customer service.",
     stat: "24/7",
-    statLabel: "compliance required",
-    image: fi2Image
+    statLabel: "compliance required"
   },
   {
     icon: <AlertTriangle className="w-6 h-6" />,
     title: "Limited Availability",
     description: "Customers need financial advice and support outside business hours, but staffing 24/7 support is prohibitively expensive.",
     stat: "45%",
-    statLabel: "inquiries after hours",
-    image: fi1Image
+    statLabel: "inquiries after hours"
   }
 ];
 
@@ -68,29 +55,25 @@ const solutions = [
     icon: <Zap className="w-6 h-6" />,
     title: "Instant Pre-Qualification",
     description: "AI agent collects necessary information and provides instant loan pre-qualification decisions, dramatically speeding up the process.",
-    benefits: ["Instant eligibility checks", "Reduce application time by 80%", "Higher completion rates"],
-    image: fisol1Image
+    benefits: ["Instant eligibility checks", "Reduce application time by 80%", "Higher completion rates"]
   },
   {
     icon: <MessageSquare className="w-6 h-6" />,
     title: "Automated Query Resolution",
     description: "Handle 70% of customer inquiries instantly with AI that understands financial products and can provide accurate information.",
-    benefits: ["Instant answers 24/7", "Reduce support tickets by 70%", "Consistent accurate responses"],
-    image: fisol2Image
+    benefits: ["Instant answers 24/7", "Reduce support tickets by 70%", "Consistent accurate responses"]
   },
   {
     icon: <Shield className="w-6 h-6" />,
     title: "Built-In Compliance",
     description: "AI agent is trained on compliance requirements and ensures every interaction meets regulatory standards.",
-    benefits: ["GDPR & SOC2 compliant", "Audit trail for all conversations", "Secure data handling"],
-    image: fisol3Image
+    benefits: ["GDPR & SOC2 compliant", "Audit trail for all conversations", "Secure data handling"]
   },
   {
     icon: <CheckCircle2 className="w-6 h-6" />,
     title: "24/7 Financial Guidance",
     description: "Provide round-the-clock support for account inquiries via chat or voice calls, product information, and financial guidance without additional staffing.",
-    benefits: ["Chat & voice support", "Multilingual capabilities", "Seamless human handoff"],
-    image: fisol4Image
+    benefits: ["Chat & voice support", "Multilingual capabilities", "Seamless human handoff"]
   }
 ];
 
@@ -105,8 +88,8 @@ const integrations = [
 
 export default function FinanceIndustry() {
   return (
-    <div className="min-h-screen bg-background">
-      <Navbar />
+    <div className="min-h-screen bg-transparent overflow-visible">
+      <Navbar variant="dark" />
       
       <main className="pt-32 pb-20">
         {/* Hero Section */}
@@ -150,7 +133,7 @@ export default function FinanceIndustry() {
               className="text-center max-w-3xl mx-auto mb-16"
             >
               <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6">
-                The <span className="text-destructive">Challenges</span> Financial Institutions Face
+                The <span className="text-red-400">Challenges</span> Financial Institutions Face
               </h2>
               <p className="text-lg text-muted-foreground">
                 These obstacles prevent financial services from delivering the fast, modern experience customers expect.
@@ -167,29 +150,23 @@ export default function FinanceIndustry() {
                   transition={{ delay: index * 0.1 }}
                   className="flex flex-col rounded-2xl bg-background border border-border overflow-hidden"
                 >
-                  {/* Problem Infographic - Top */}
-                  <div className="w-full h-56 bg-gradient-to-br from-secondary/50 to-secondary/30 flex items-center justify-center p-4">
-                    <img 
-                      src={problem.image} 
-                      alt={`${problem.title} infographic`}
-                      className="w-full h-full object-contain"
-                      loading="lazy"
-                    />
-                  </div>
-                  
-                  {/* Content - Bottom */}
-                  <div className="p-6">
-                    <div className="flex items-start justify-between gap-4 mb-4">
-                      <div className="w-12 h-12 rounded-xl bg-destructive/10 text-destructive flex items-center justify-center shrink-0">
-                        {problem.icon}
+                  <div className="p-6 flex flex-col gap-4">
+                    <div className="w-full h-40 rounded-2xl bg-gradient-to-br from-red-500/15 via-background to-secondary/20 border border-red-400/40 flex items-center justify-between px-5 py-4">
+                      <div className="flex items-center gap-3">
+                        <div className="w-12 h-12 rounded-xl bg-red-500/20 text-red-300 flex items-center justify-center shrink-0">
+                          {problem.icon}
+                        </div>
+                        <div>
+                          <p className="text-xs uppercase tracking-[0.18em] text-red-300/90">Impact</p>
+                          <p className="text-2xl font-extrabold text-red-300">{problem.stat}</p>
+                        </div>
                       </div>
-                      <div className="flex items-baseline gap-2">
-                        <span className="text-3xl font-bold text-destructive">{problem.stat}</span>
-                        <span className="text-sm text-muted-foreground">{problem.statLabel}</span>
-                      </div>
+                      <p className="text-xs text-red-200 font-medium max-w-[140px] text-right">
+                        {problem.statLabel}
+                      </p>
                     </div>
-                    <h3 className="text-xl font-heading font-bold mb-3">{problem.title}</h3>
-                    <p className="text-muted-foreground leading-relaxed">{problem.description}</p>
+                    <h3 className="text-xl font-heading font-bold mb-1">{problem.title}</h3>
+                    <p className="text-muted-foreground leading-relaxed text-sm">{problem.description}</p>
                   </div>
                 </motion.div>
               ))}
@@ -240,14 +217,27 @@ export default function FinanceIndustry() {
                     </ul>
                   </div>
                   
-                  {/* Solution Infographic */}
-                  <div className="flex-1 w-full max-w-lg rounded-2xl bg-gradient-to-br from-primary/5 to-secondary/50 p-6 flex items-center justify-center">
-                    <img 
-                      src={solution.image} 
-                      alt={`${solution.title} infographic`}
-                      className="w-full h-auto max-h-80 object-contain"
-                      loading="lazy"
-                    />
+                  <div className="flex-1 w-full max-w-lg rounded-2xl bg-gradient-to-br from-primary/5 to-secondary/50 p-6 flex flex-col justify-between gap-4">
+                    <div className="flex items-center justify-between text-xs text-muted-foreground">
+                      <span className="uppercase tracking-[0.18em] text-primary/80">Outcome</span>
+                      <span className="px-2 py-1 rounded-full bg-primary/10 text-primary font-semibold text-[10px]">
+                        Built for regulated teams
+                      </span>
+                    </div>
+                    <div className="grid grid-cols-3 gap-3 text-xs text-muted-foreground">
+                      <div className="rounded-xl bg-background/70 border border-border/60 p-3 space-y-1">
+                        <p className="font-semibold text-foreground text-[11px]">Process</p>
+                        <p>{solution.title.includes("Pre-Qualification") ? "Instant eligibility checks with clear outcomes." : solution.title.includes("Automated Query Resolution") ? "Resolve FAQs and account questions immediately." : solution.title.includes("Built-In Compliance") ? "Every answer aligned with policy and regulation." : "Always-on financial guidance across channels."}</p>
+                      </div>
+                      <div className="rounded-xl bg-background/70 border border-border/60 p-3 space-y-1">
+                        <p className="font-semibold text-foreground text-[11px]">Channel</p>
+                        <p>{solution.title.includes("Pre-Qualification") ? "Web & mobile" : "Chat & voice"}</p>
+                      </div>
+                      <div className="rounded-xl bg-background/70 border border-border/60 p-3 space-y-1">
+                        <p className="font-semibold text-foreground text-[11px]">Metric</p>
+                        <p>{solution.title.includes("Pre-Qualification") ? "80% faster decisions" : solution.title.includes("Automated Query Resolution") ? "70% fewer tickets" : solution.title.includes("Built-In Compliance") ? "Audit-ready logs" : "24/7 coverage"}</p>
+                      </div>
+                    </div>
                   </div>
                 </motion.div>
               ))}

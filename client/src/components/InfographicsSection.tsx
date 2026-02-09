@@ -1,88 +1,155 @@
 import { motion } from "framer-motion";
-import info1 from "@assets/info1_1768935544983.png";
-import info2 from "@assets/info2_1768935545034.png";
-import info3 from "@assets/info3_1768935545035.png";
-import info4 from "@assets/info4_1768935545036.png";
-import info5 from "@assets/info5_1768935545036.png";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious
+} from "@/components/ui/carousel";
 
-const infographics = [
+const steps = [
   {
-    image: info1,
-    title: "Instant AI Response 24/7",
-    description: "Engage customers the moment they reach out on WhatsApp or your website."
+    label: "Step 1",
+    title: "Capture every lead across channels",
+    description:
+      "Your AI agent greets visitors on your website, WhatsApp, and phone the second they arrive—no wait times, no missed opportunities.",
+    points: [
+      "Instant replies on web chat, WhatsApp, and voice",
+      "Pre-built playbooks for sales, support, and FAQs",
+      "Qualifies intent before a human ever joins"
+    ]
   },
   {
-    image: info2,
-    title: "Understand Customer Intent",
-    description: "Our AI instantly processes queries about tracking, returns, and products."
+    label: "Step 2",
+    title: "Understand, personalize, and recommend",
+    description:
+      "Commerce-Brain connects to your catalog, orders, and CRM so every answer and recommendation is grounded in your live data.",
+    points: [
+      "Understands orders, inventory, and customer history",
+      "Personalized product recommendations in real time",
+      "Multi-language support for global customers"
+    ]
   },
   {
-    image: info3,
-    title: "Automated Sales Recovery",
-    description: "Boost conversions with automated abandoned cart recovery and personalized offers."
+    label: "Step 3",
+    title: "Take action and close the loop",
+    description:
+      "From placing orders to booking appointments and recovering abandoned carts, the AI doesn’t just reply—it acts.",
+    points: [
+      "Places orders and updates carts on your stack",
+      "Books meetings and calls directly to your calendar",
+      "Recovers lost revenue with tailored offers"
+    ]
   },
   {
-    image: info4,
-    title: "Seamless Platform Integration",
-    description: "Real-time sync with Shopify and other major platforms for orders and inventory."
-  },
-  {
-    image: info5,
-    title: "Performance Dashboard",
-    description: "Track revenue, conversation rates, and automation efficiency in real-time."
+    label: "Step 4",
+    title: "Learn, optimize, and scale",
+    description:
+      "Every interaction feeds into a central brain that continually improves scripts, responses, and routing to maximize ROI.",
+    points: [
+      "Live dashboards for conversion and CSAT",
+      "Conversation analytics for your team",
+      "Continuous improvement without extra headcount"
+    ]
   }
 ];
 
 export function InfographicsSection() {
   return (
-    <section className="py-24 bg-secondary/30 overflow-hidden">
+    <section className="py-24 bg-black/60 overflow-visible">
       <div className="container mx-auto px-4">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center max-w-3xl mx-auto mb-16"
+          className="text-center max-w-3xl mx-auto mb-10 md:mb-16"
         >
-          <h2 className="text-3xl md:text-5xl font-heading font-bold mb-6 tracking-tight">
-            How Cartiva AI Transforms Your Business
+          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-primary mb-3">
+            How it works
+          </p>
+          <h2 className="text-3xl md:text-5xl font-heading font-bold mb-4 tracking-tight">
+            From first hello to closed sale
           </h2>
           <p className="text-lg text-muted-foreground">
-            A visual breakdown of how our AI agent handles the heavy lifting, from first contact to final sale.
+            See how your AI agent handles the complete journey across web, WhatsApp, and
+            voice—without adding more people to your team.
           </p>
         </motion.div>
 
-        <div className="space-y-32">
-          {infographics.map((info, index) => (
-            <motion.div 
-              key={index}
-              initial={{ opacity: 0, y: 40 }}
+        {/* Mobile / tablet: slider */}
+        <div className="md:hidden">
+          <Carousel
+            opts={{ align: "start", loop: true }}
+            className="relative"
+          >
+            <CarouselContent>
+              {steps.map((step) => (
+                <CarouselItem key={step.title}>
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="h-full rounded-2xl border border-border bg-background p-6 shadow-sm"
+                  >
+                    <div className="text-xs font-semibold uppercase tracking-[0.25em] text-primary mb-2">
+                      {step.label}
+                    </div>
+                    <h3 className="text-2xl font-heading font-bold mb-3">
+                      {step.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground mb-4">
+                      {step.description}
+                    </p>
+                    <ul className="space-y-2 text-sm text-muted-foreground">
+                      {step.points.map((point) => (
+                        <li key={point} className="flex gap-2">
+                          <span className="mt-[6px] h-1.5 w-1.5 rounded-full bg-primary/70" />
+                          <span>{point}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </motion.div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="-left-2 bg-background/80 border-border/60" />
+            <CarouselNext className="-right-2 bg-background/80 border-border/60" />
+          </Carousel>
+        </div>
+
+        {/* Desktop: stepped layout, minimal scroll */}
+        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {steps.map((step, index) => (
+            <motion.div
+              key={step.title}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-12 items-center`}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ delay: index * 0.05 }}
+              className="relative rounded-2xl border border-border bg-background/80 p-6 shadow-sm overflow-hidden"
             >
-              <div className="flex-1 space-y-6">
-                <h3 className="text-2xl md:text-3xl font-heading font-bold text-foreground">
-                  {info.title}
+              <div className="absolute inset-0 bg-gradient-to-b from-primary/3 to-transparent pointer-events-none" />
+              <div className="relative z-10 space-y-3">
+                <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.25em] text-primary">
+                  <span className="h-6 w-6 rounded-full border border-primary/40 flex items-center justify-center text-[11px]">
+                    {index + 1}
+                  </span>
+                  <span>{step.label}</span>
+                </div>
+                <h3 className="text-xl font-heading font-bold text-foreground">
+                  {step.title}
                 </h3>
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  {info.description}
+                <p className="text-sm text-muted-foreground">
+                  {step.description}
                 </p>
-                <div className="h-1 w-20 bg-primary rounded-full" />
-              </div>
-              
-              <div className="flex-1 w-full">
-                <motion.div 
-                  whileHover={{ scale: 1.02 }}
-                  className="relative rounded-3xl overflow-hidden shadow-2xl border border-border bg-white"
-                >
-                  <img 
-                    src={info.image} 
-                    alt={info.title} 
-                    className="w-full h-auto object-cover"
-                  />
-                  <div className="absolute inset-0 ring-1 ring-inset ring-black/10 rounded-3xl" />
-                </motion.div>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  {step.points.map((point) => (
+                    <li key={point} className="flex gap-2">
+                      <span className="mt-[6px] h-1.5 w-1.5 rounded-full bg-primary/70" />
+                      <span>{point}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </motion.div>
           ))}

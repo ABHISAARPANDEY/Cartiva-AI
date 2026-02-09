@@ -47,7 +47,7 @@ const industries = [
 
 export function IndustriesSection() {
   return (
-    <section className="py-24 px-4 bg-secondary/30">
+    <section className="py-24 px-4 bg-black/60 overflow-visible">
       <div className="container mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -63,7 +63,48 @@ export function IndustriesSection() {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Mobile: horizontal cards to avoid long scroll */}
+        <div className="md:hidden mb-4">
+          <div className="flex gap-4 overflow-x-auto pb-2 no-scrollbar snap-x snap-mandatory">
+            {industries.map((industry) => (
+              <motion.div
+                key={industry.title}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                className="min-w-[80%] snap-center"
+              >
+                <Link href={industry.href}>
+                  <div
+                    className={`group h-full p-6 rounded-2xl border ${industry.borderColor} ${industry.bgColor} hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 cursor-pointer`}
+                  >
+                    <div
+                      className={`w-14 h-14 rounded-xl ${industry.iconBg} flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300`}
+                    >
+                      {industry.icon}
+                    </div>
+
+                    <h3 className="text-lg font-heading font-bold mb-2 group-hover:text-primary transition-colors">
+                      {industry.title}
+                    </h3>
+
+                    <p className="text-muted-foreground text-sm leading-relaxed mb-3">
+                      {industry.description}
+                    </p>
+
+                    <div className="flex items-center text-primary font-medium text-xs group-hover:gap-2 transition-all">
+                      <span>See playbook</span>
+                      <ArrowRight className="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* Desktop grid */}
+        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {industries.map((industry, index) => (
             <motion.div
               key={industry.title}

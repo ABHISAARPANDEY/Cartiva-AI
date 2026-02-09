@@ -4,6 +4,9 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import ScrollToTop from "@/components/ScrollToTop";
+import { OdysseyBackground } from "@/components/OdysseyBackground";
+import { LightningProvider } from "@/contexts/LightningContext";
+import { GlobalLightningHandler } from "@/components/GlobalLightningHandler";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
 import HowItWorks from "@/pages/HowItWorks";
@@ -18,6 +21,7 @@ import EcommerceIndustry from "@/pages/industries/Ecommerce";
 import RealEstateIndustry from "@/pages/industries/RealEstate";
 import FinanceIndustry from "@/pages/industries/Finance";
 import HealthcareIndustry from "@/pages/industries/Healthcare";
+// TestAgent page is intentionally not imported to keep the public app focused and production-ready
 
 function Router() {
   return (
@@ -44,9 +48,17 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <ScrollToTop />
-        <Toaster />
-        <Router />
+        <LightningProvider>
+          <GlobalLightningHandler />
+          <div className="dark relative min-h-screen bg-black overflow-x-hidden">
+            <OdysseyBackground />
+            <div className="relative z-10 min-h-screen">
+              <ScrollToTop />
+              <Toaster />
+              <Router />
+            </div>
+          </div>
+        </LightningProvider>
       </TooltipProvider>
     </QueryClientProvider>
   );

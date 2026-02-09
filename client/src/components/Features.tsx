@@ -69,7 +69,7 @@ const itemVariants: Variants = {
 
 export function Features() {
   return (
-    <section id="features" className="py-20 bg-background overflow-hidden">
+    <section id="features" className="py-20 bg-black/70 overflow-visible">
       <div className="container mx-auto px-4">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -84,12 +84,52 @@ export function Features() {
           </p>
         </motion.div>
 
+        {/* On mobile: slider of cards to avoid long scrolling */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          className="md:hidden"
+        >
+          <div className="flex gap-4 overflow-x-auto pb-2 no-scrollbar snap-x snap-mandatory">
+            {features.map((feature, index) => (
+              <motion.div
+                key={index}
+                variants={itemVariants}
+                whileHover={{
+                  y: -4,
+                  transition: { duration: 0.2 }
+                }}
+                className="min-w-[80%] snap-center group p-6 rounded-2xl border border-border bg-card hover:border-primary/50 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] transition-colors duration-300 relative overflow-hidden"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="relative z-10">
+                  <motion.div
+                    whileHover={{ scale: 1.06, rotate: 3 }}
+                    className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-4"
+                  >
+                    {feature.icon}
+                  </motion.div>
+                  <h3 className="text-lg font-bold mb-2 font-heading group-hover:text-primary transition-colors">
+                    {feature.title}
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    {feature.description}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Desktop grid, minimal extra scroll but high scan speed */}
         <motion.div 
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
           {features.map((feature, index) => (
             <motion.div

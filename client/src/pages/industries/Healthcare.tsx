@@ -19,47 +19,34 @@ import {
   Pill
 } from "lucide-react";
 
-import he1Image from "@/assets/he1.png";
-import he2Image from "@/assets/he2.png";
-import he3Image from "@/assets/he3.png";
-import he4Image from "@/assets/he4.png";
-import hesol1Image from "@/assets/hesol1.png";
-import hesol2Image from "@/assets/hesol2.png";
-import hesol3Image from "@/assets/hesol3.png";
-import hesol4Image from "@/assets/hesol4.png";
-
 const problems = [
   {
     icon: <Phone className="w-6 h-6" />,
     title: "Overwhelmed Phone Lines",
     description: "Patients wait on hold for simple tasks like appointment scheduling, prescription refills, or general inquiries.",
     stat: "20min",
-    statLabel: "average hold time",
-    image: he1Image
+    statLabel: "average hold time"
   },
   {
     icon: <Calendar className="w-6 h-6" />,
     title: "High No-Show Rates",
     description: "Patients forget appointments without proper reminders, leading to lost revenue and inefficient scheduling.",
     stat: "30%",
-    statLabel: "appointments missed",
-    image: he2Image
+    statLabel: "appointments missed"
   },
   {
     icon: <AlertCircle className="w-6 h-6" />,
     title: "After-Hours Patient Anxiety",
     description: "Patients have health concerns outside office hours but can't get information, leading to unnecessary ER visits.",
     stat: "40%",
-    statLabel: "inquiries after hours",
-    image: he3Image
+    statLabel: "inquiries after hours"
   },
   {
     icon: <Clock className="w-6 h-6" />,
     title: "Staff Burnout",
     description: "Administrative staff spend excessive time on routine tasks instead of focusing on patient care.",
     stat: "60%",
-    statLabel: "time on admin tasks",
-    image: he4Image
+    statLabel: "time on admin tasks"
   }
 ];
 
@@ -68,29 +55,25 @@ const solutions = [
     icon: <MessageSquare className="w-6 h-6" />,
     title: "24/7 Patient Communication",
     description: "AI agent handles patient inquiries instantly via WhatsApp, website chat, or voice calls, reducing wait times to zero.",
-    benefits: ["Chat & voice support", "Reduce call volume by 70%", "Available in multiple languages"],
-    image: hesol1Image
+    benefits: ["Chat & voice support", "Reduce call volume by 70%", "Available in multiple languages"]
   },
   {
     icon: <Calendar className="w-6 h-6" />,
     title: "Smart Appointment Management",
     description: "Automated scheduling, rescheduling, and reminders that reduce no-shows and optimize your calendar.",
-    benefits: ["Reduce no-shows by 50%", "Automated reminders", "Easy self-service rescheduling"],
-    image: hesol2Image
+    benefits: ["Reduce no-shows by 50%", "Automated reminders", "Easy self-service rescheduling"]
   },
   {
     icon: <Shield className="w-6 h-6" />,
     title: "HIPAA-Compliant Triage",
     description: "AI provides health information and helps patients determine urgency while maintaining strict compliance.",
-    benefits: ["HIPAA compliant", "Symptom assessment", "Appropriate care routing"],
-    image: hesol3Image
+    benefits: ["HIPAA compliant", "Symptom assessment", "Appropriate care routing"]
   },
   {
     icon: <CheckCircle2 className="w-6 h-6" />,
     title: "Administrative Automation",
     description: "Automate routine tasks like prescription refill requests, form collection, and insurance verification.",
-    benefits: ["Save 15+ hours weekly", "Reduce staff burnout", "Improve patient satisfaction"],
-    image: hesol4Image
+    benefits: ["Save 15+ hours weekly", "Reduce staff burnout", "Improve patient satisfaction"]
   }
 ];
 
@@ -105,8 +88,8 @@ const integrations = [
 
 export default function HealthcareIndustry() {
   return (
-    <div className="min-h-screen bg-background">
-      <Navbar />
+    <div className="min-h-screen bg-transparent overflow-visible">
+      <Navbar variant="dark" />
       
       <main className="pt-32 pb-20">
         {/* Hero Section */}
@@ -150,7 +133,7 @@ export default function HealthcareIndustry() {
               className="text-center max-w-3xl mx-auto mb-16"
             >
               <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6">
-                The <span className="text-destructive">Challenges</span> Healthcare Providers Face
+                The <span className="text-red-400">Challenges</span> Healthcare Providers Face
               </h2>
               <p className="text-lg text-muted-foreground">
                 These obstacles prevent healthcare organizations from delivering the patient experience people deserve.
@@ -167,29 +150,23 @@ export default function HealthcareIndustry() {
                   transition={{ delay: index * 0.1 }}
                   className="flex flex-col rounded-2xl bg-background border border-border overflow-hidden"
                 >
-                  {/* Problem Infographic - Top */}
-                  <div className="w-full h-56 bg-gradient-to-br from-secondary/50 to-secondary/30 flex items-center justify-center p-4">
-                    <img 
-                      src={problem.image} 
-                      alt={`${problem.title} infographic`}
-                      className="w-full h-full object-contain"
-                      loading="lazy"
-                    />
-                  </div>
-                  
-                  {/* Content - Bottom */}
-                  <div className="p-6">
-                    <div className="flex items-start justify-between gap-4 mb-4">
-                      <div className="w-12 h-12 rounded-xl bg-destructive/10 text-destructive flex items-center justify-center shrink-0">
-                        {problem.icon}
+                  <div className="p-6 flex flex-col gap-4">
+                    <div className="w-full h-40 rounded-2xl bg-gradient-to-br from-red-500/15 via-background to-secondary/20 border border-red-400/40 flex items-center justify-between px-5 py-4">
+                      <div className="flex items-center gap-3">
+                        <div className="w-12 h-12 rounded-xl bg-red-500/20 text-red-300 flex items-center justify-center shrink-0">
+                          {problem.icon}
+                        </div>
+                        <div>
+                          <p className="text-xs uppercase tracking-[0.18em] text-red-300/90">Impact</p>
+                          <p className="text-2xl font-extrabold text-red-300">{problem.stat}</p>
+                        </div>
                       </div>
-                      <div className="flex items-baseline gap-2">
-                        <span className="text-3xl font-bold text-destructive">{problem.stat}</span>
-                        <span className="text-sm text-muted-foreground">{problem.statLabel}</span>
-                      </div>
+                      <p className="text-xs text-red-200 font-medium max-w-[140px] text-right">
+                        {problem.statLabel}
+                      </p>
                     </div>
-                    <h3 className="text-xl font-heading font-bold mb-3">{problem.title}</h3>
-                    <p className="text-muted-foreground leading-relaxed">{problem.description}</p>
+                    <h3 className="text-xl font-heading font-bold mb-1">{problem.title}</h3>
+                    <p className="text-muted-foreground leading-relaxed text-sm">{problem.description}</p>
                   </div>
                 </motion.div>
               ))}
@@ -240,14 +217,27 @@ export default function HealthcareIndustry() {
                     </ul>
                   </div>
                   
-                  {/* Solution Infographic */}
-                  <div className="flex-1 w-full max-w-lg rounded-2xl bg-gradient-to-br from-primary/5 to-secondary/50 p-6 flex items-center justify-center">
-                    <img 
-                      src={solution.image} 
-                      alt={`${solution.title} infographic`}
-                      className="w-full h-auto max-h-80 object-contain"
-                      loading="lazy"
-                    />
+                  <div className="flex-1 w-full max-w-lg rounded-2xl bg-gradient-to-br from-primary/5 to-secondary/50 p-6 flex flex-col justify-between gap-4">
+                    <div className="flex items-center justify-between text-xs text-muted-foreground">
+                      <span className="uppercase tracking-[0.18em] text-primary/80">Outcome</span>
+                      <span className="px-2 py-1 rounded-full bg-primary/10 text-primary font-semibold text-[10px]">
+                        Patient-first automation
+                      </span>
+                    </div>
+                    <div className="grid grid-cols-3 gap-3 text-xs text-muted-foreground">
+                      <div className="rounded-xl bg-background/70 border border-border/60 p-3 space-y-1">
+                        <p className="font-semibold text-foreground text-[11px]">Workflow</p>
+                        <p>{solution.title.includes("Patient Communication") ? "Triage, FAQs, directions and updates in one flow." : solution.title.includes("Smart Appointment") ? "Bookings, reschedules, reminders in seconds." : solution.title.includes("HIPAA-Compliant") ? "Secure triage with clear routing recommendations." : "Refills, forms and verifications handled automatically."}</p>
+                      </div>
+                      <div className="rounded-xl bg-background/70 border border-border/60 p-3 space-y-1">
+                        <p className="font-semibold text-foreground text-[11px]">Channel</p>
+                        <p>{solution.title.includes("Patient Communication") ? "Web, WhatsApp & voice" : "Scheduling stack"}</p>
+                      </div>
+                      <div className="rounded-xl bg-background/70 border border-border/60 p-3 space-y-1">
+                        <p className="font-semibold text-foreground text-[11px]">Metric</p>
+                        <p>{solution.title.includes("Patient Communication") ? "70% fewer calls" : solution.title.includes("Smart Appointment") ? "50% fewer no-shows" : solution.title.includes("HIPAA-Compliant") ? "Compliance by design" : "15+ hours saved weekly"}</p>
+                      </div>
+                    </div>
                   </div>
                 </motion.div>
               ))}

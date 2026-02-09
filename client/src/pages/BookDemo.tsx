@@ -81,8 +81,8 @@ export default function BookDemo() {
   };
 
   return (
-    <div className="min-h-screen bg-background">
-      <Navbar />
+    <div className="min-h-screen bg-transparent overflow-visible">
+      <Navbar variant="dark" />
       
       <main className="pt-32 pb-20">
         <div className="container mx-auto px-4">

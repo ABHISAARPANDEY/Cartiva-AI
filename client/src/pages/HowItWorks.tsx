@@ -5,10 +5,6 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 
-import step1Image from "@/assets/info7.png";
-import step2Image from "@/assets/info8.png";
-import step3Image from "@/assets/info9.png";
-
 const steps = [
   {
     icon: <Globe className="w-8 h-8" />,
@@ -19,8 +15,7 @@ const steps = [
       "Real-time data sync",
       "Automatic content indexing",
       "Secure API connection"
-    ],
-    image: step1Image
+    ]
   },
   {
     icon: <MessageSquare className="w-8 h-8" />,
@@ -31,8 +26,7 @@ const steps = [
       "WhatsApp, Web Chat & Voice setup",
       "AI Voice Agent configuration",
       "Lead qualification rules"
-    ],
-    image: step2Image
+    ]
   },
   {
     icon: <Rocket className="w-8 h-8" />,
@@ -43,15 +37,14 @@ const steps = [
       "Voice & chat lead capture",
       "Multilingual support",
       "Full ROI dashboard"
-    ],
-    image: step3Image
+    ]
   }
 ];
 
 export default function HowItWorks() {
   return (
-    <div className="min-h-screen bg-background">
-      <Navbar />
+    <div className="min-h-screen bg-transparent overflow-visible">
+      <Navbar variant="dark" />
       
       <main className="pt-32 pb-20">
         <div className="container mx-auto px-4">
@@ -100,27 +93,40 @@ export default function HowItWorks() {
                 <div className="flex-1 w-full max-w-xl">
                   <motion.div 
                     whileHover={{ scale: 1.02 }}
-                    className="aspect-square lg:aspect-video rounded-3xl bg-secondary/50 border border-border flex items-center justify-center relative overflow-hidden group shadow-2xl"
+                    className="aspect-square lg:aspect-video rounded-3xl bg-gradient-to-br from-primary/10 via-background to-accent/10 border border-border flex items-center justify-center relative overflow-hidden group shadow-2xl"
                   >
-                    {step.image ? (
-                      <img 
-                        src={step.image} 
-                        alt={`${step.title} illustration`}
-                        className="w-full h-full object-contain"
-                        loading="eager"
-                        decoding="async"
-                      />
-                    ) : (
-                      <>
-                        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-50" />
-                        <div className="text-center space-y-4 relative z-10 p-8">
-                          <div className="text-4xl font-bold text-muted-foreground/20 uppercase tracking-widest group-hover:text-primary/20 transition-colors">
-                            Step 0{index + 1}
-                          </div>
-                          <p className="text-sm font-medium text-muted-foreground">Illustration of {step.title} Interface</p>
+                    <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 via-transparent to-accent/10 opacity-70" />
+                    <div className="relative z-10 flex flex-col items-center justify-center gap-4 p-8">
+                      <div className="text-xs font-semibold uppercase tracking-[0.3em] text-primary/80">
+                        Step 0{index + 1}
+                      </div>
+                      <div className="text-3xl font-heading font-bold text-foreground text-center">
+                        {step.title}
+                      </div>
+                      <p className="text-sm text-muted-foreground text-center max-w-md">
+                        Visual journey of how Cartiva AI {index === 0 ? "connects to your stack" : index === 1 ? "adapts to your brand" : "goes live across all channels"}.
+                      </p>
+                      <div className="grid grid-cols-3 gap-3 w-full text-left text-xs text-muted-foreground/90">
+                        <div className="rounded-xl bg-background/60 border border-border/60 p-3">
+                          <p className="font-semibold text-foreground mb-1">
+                            {index === 0 ? "Sources" : index === 1 ? "Playbooks" : "Channels"}
+                          </p>
+                          <p>{index === 0 ? "Website, catalog, orders" : index === 1 ? "Sales, support, FAQ" : "Web, WhatsApp, voice"}</p>
                         </div>
-                      </>
-                    )}
+                        <div className="rounded-xl bg-background/60 border border-border/60 p-3">
+                          <p className="font-semibold text-foreground mb-1">
+                            {index === 0 ? "Sync" : index === 1 ? "Behaviour" : "Coverage"}
+                          </p>
+                          <p>{index === 0 ? "Real-time, secure" : index === 1 ? "Brand-safe & on-tone" : "24/7 global"}</p>
+                        </div>
+                        <div className="rounded-xl bg-background/60 border border-border/60 p-3">
+                          <p className="font-semibold text-foreground mb-1">
+                            Outcome
+                          </p>
+                          <p>{index === 0 ? "Unified customer context" : index === 1 ? "Consistent experiences" : "Always-on AI agent"}</p>
+                        </div>
+                      </div>
+                    </div>
                   </motion.div>
                 </div>
               </motion.div>

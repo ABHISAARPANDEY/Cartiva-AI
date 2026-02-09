@@ -18,47 +18,34 @@ import {
   Phone
 } from "lucide-react";
 
-import ecom1Image from "@/assets/ecom1.png";
-import ecom2Image from "@/assets/ecom2.png";
-import ecom3Image from "@/assets/ecom3.png";
-import ecom4Image from "@/assets/ecom4.png";
-import ecomsol1Image from "@/assets/ecomsol1.png";
-import ecomsol2Image from "@/assets/ecomsol2.png";
-import ecomsol3Image from "@/assets/ecomsol3.png";
-import ecomsol4Image from "@/assets/ecomsol4.png";
-
 const problems = [
   {
     icon: <TrendingDown className="w-6 h-6" />,
     title: "High Cart Abandonment Rate",
     description: "70% of shoppers abandon their carts due to slow responses, complex checkout processes, or unanswered questions about products.",
     stat: "70%",
-    statLabel: "carts abandoned",
-    image: ecom1Image
+    statLabel: "carts abandoned"
   },
   {
     icon: <Clock className="w-6 h-6" />,
     title: "Slow Customer Support",
     description: "Customers expect instant responses. Delayed support leads to lost sales and negative reviews that damage your brand.",
     stat: "53%",
-    statLabel: "leave without buying",
-    image: ecom3Image
+    statLabel: "leave without buying"
   },
   {
     icon: <Users className="w-6 h-6" />,
     title: "Scaling Support is Expensive",
     description: "Hiring more support staff to handle peak seasons and growing demand quickly eats into profit margins.",
     stat: "3x",
-    statLabel: "cost increase",
-    image: ecom2Image
+    statLabel: "cost increase"
   },
   {
     icon: <XCircle className="w-6 h-6" />,
     title: "Poor Product Recommendations",
     description: "Generic recommendations fail to convert. Customers want personalized suggestions based on their unique preferences.",
     stat: "35%",
-    statLabel: "revenue lost",
-    image: ecom4Image
+    statLabel: "revenue lost"
   }
 ];
 
@@ -67,29 +54,25 @@ const solutions = [
     icon: <MessageSquare className="w-6 h-6" />,
     title: "AI-Powered Cart Recovery",
     description: "Automatically reach out to customers who abandoned their carts via WhatsApp with personalized messages and incentives.",
-    benefits: ["Recover up to 30% of abandoned carts", "Personalized follow-up messages", "Automated discount offers"],
-    image: ecomsol1Image
+    benefits: ["Recover up to 30% of abandoned carts", "Personalized follow-up messages", "Automated discount offers"]
   },
   {
     icon: <Zap className="w-6 h-6" />,
     title: "Instant 24/7 Support",
     description: "AI agent responds to customer queries in seconds via chat or voice calls, any time of day, handling 70% of conversations without human intervention.",
-    benefits: ["Chat & voice support", "Handle unlimited conversations", "Seamless human handoff"],
-    image: ecomsol3Image
+    benefits: ["Chat & voice support", "Handle unlimited conversations", "Seamless human handoff"]
   },
   {
     icon: <Users className="w-6 h-6" />,
     title: "Cost-Effective Scaling",
     description: "Scale your support capacity without hiring more staff. Our AI handles peak loads effortlessly while maintaining quality.",
-    benefits: ["80% reduction in support costs", "No seasonal hiring needed", "Consistent service quality"],
-    image: ecomsol2Image
+    benefits: ["80% reduction in support costs", "No seasonal hiring needed", "Consistent service quality"]
   },
   {
     icon: <CheckCircle2 className="w-6 h-6" />,
     title: "Smart Product Recommendations",
     description: "AI learns customer preferences and browsing behavior to suggest products they're most likely to buy.",
-    benefits: ["35% increase in average order value", "Personalized for each customer", "Real-time inventory awareness"],
-    image: ecomsol4Image
+    benefits: ["35% increase in average order value", "Personalized for each customer", "Real-time inventory awareness"]
   }
 ];
 
@@ -104,8 +87,8 @@ const integrations = [
 
 export default function EcommerceIndustry() {
   return (
-    <div className="min-h-screen bg-background">
-      <Navbar />
+    <div className="min-h-screen bg-transparent overflow-visible">
+      <Navbar variant="dark" />
       
       <main className="pt-32 pb-20">
         {/* Hero Section */}
@@ -149,7 +132,7 @@ export default function EcommerceIndustry() {
               className="text-center max-w-3xl mx-auto mb-16"
             >
               <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6">
-                The <span className="text-destructive">Challenges</span> E-commerce Faces
+                The <span className="text-red-400">Challenges</span> E-commerce Faces
               </h2>
               <p className="text-lg text-muted-foreground">
                 These common pain points are costing online stores millions in lost revenue every year.
@@ -166,29 +149,23 @@ export default function EcommerceIndustry() {
                   transition={{ delay: index * 0.1 }}
                   className="flex flex-col rounded-2xl bg-background border border-border overflow-hidden"
                 >
-                  {/* Problem Infographic - Top */}
-                  <div className="w-full h-56 bg-gradient-to-br from-secondary/50 to-secondary/30 flex items-center justify-center p-4">
-                    <img 
-                      src={problem.image} 
-                      alt={`${problem.title} infographic`}
-                      className="w-full h-full object-contain"
-                      loading="lazy"
-                    />
-                  </div>
-                  
-                  {/* Content - Bottom */}
-                  <div className="p-6">
-                    <div className="flex items-start justify-between gap-4 mb-4">
-                      <div className="w-12 h-12 rounded-xl bg-destructive/10 text-destructive flex items-center justify-center shrink-0">
-                        {problem.icon}
+                  <div className="p-6 flex flex-col gap-4">
+                    <div className="w-full h-40 rounded-2xl bg-gradient-to-br from-red-500/15 via-background to-secondary/20 border border-red-400/40 flex items-center justify-between px-5 py-4">
+                      <div className="flex items-center gap-3">
+                        <div className="w-12 h-12 rounded-xl bg-red-500/20 text-red-300 flex items-center justify-center shrink-0">
+                          {problem.icon}
+                        </div>
+                        <div>
+                          <p className="text-xs uppercase tracking-[0.18em] text-red-300/90">Impact</p>
+                          <p className="text-2xl font-extrabold text-red-300">{problem.stat}</p>
+                        </div>
                       </div>
-                      <div className="flex items-baseline gap-2">
-                        <span className="text-3xl font-bold text-destructive">{problem.stat}</span>
-                        <span className="text-sm text-muted-foreground">{problem.statLabel}</span>
-                      </div>
+                      <p className="text-xs text-red-200 font-medium max-w-[120px] text-right">
+                        {problem.statLabel}
+                      </p>
                     </div>
-                    <h3 className="text-xl font-heading font-bold mb-3">{problem.title}</h3>
-                    <p className="text-muted-foreground leading-relaxed">{problem.description}</p>
+                    <h3 className="text-xl font-heading font-bold mb-1">{problem.title}</h3>
+                    <p className="text-muted-foreground leading-relaxed text-sm">{problem.description}</p>
                   </div>
                 </motion.div>
               ))}
@@ -239,14 +216,27 @@ export default function EcommerceIndustry() {
                     </ul>
                   </div>
                   
-                  {/* Solution Infographic */}
-                  <div className="flex-1 w-full max-w-lg rounded-2xl bg-gradient-to-br from-primary/5 to-secondary/50 p-6 flex items-center justify-center">
-                    <img 
-                      src={solution.image} 
-                      alt={`${solution.title} infographic`}
-                      className="w-full h-auto max-h-80 object-contain"
-                      loading="lazy"
-                    />
+                  <div className="flex-1 w-full max-w-lg rounded-2xl bg-gradient-to-br from-primary/5 to-secondary/50 p-6 flex flex-col justify-between gap-4">
+                    <div className="flex items-center justify-between text-xs text-muted-foreground">
+                      <span className="uppercase tracking-[0.18em] text-primary/80">Outcome</span>
+                      <span className="px-2 py-1 rounded-full bg-primary/10 text-primary font-semibold text-[10px]">
+                        Live for Cartiva brands
+                      </span>
+                    </div>
+                    <div className="grid grid-cols-3 gap-3 text-xs text-muted-foreground">
+                      <div className="rounded-xl bg-background/70 border border-border/60 p-3 space-y-1">
+                        <p className="font-semibold text-foreground text-[11px]">Time saved</p>
+                        <p>{solution.title.includes("Cart Recovery") ? "Recover 30% more revenue with zero manual follow-up." : solution.title.includes("24/7 Support") ? "Deflect up to 70% of repetitive tickets." : solution.title.includes("Cost-Effective") ? "Scale without adding headcount in peak seasons." : "Lift AOV with AI-powered recommendations."}</p>
+                      </div>
+                      <div className="rounded-xl bg-background/70 border border-border/60 p-3 space-y-1">
+                        <p className="font-semibold text-foreground text-[11px]">Channel</p>
+                        <p>{solution.title.includes("Cart Recovery") ? "WhatsApp" : "Web, WhatsApp & voice"}</p>
+                      </div>
+                      <div className="rounded-xl bg-background/70 border border-border/60 p-3 space-y-1">
+                        <p className="font-semibold text-foreground text-[11px]">Metric</p>
+                        <p>{solution.title.includes("Cart Recovery") ? "+30% recovered carts" : solution.title.includes("24/7 Support") ? "70% automated" : solution.title.includes("Cost-Effective") ? "80% lower support costs" : "+35% AOV"}</p>
+                      </div>
+                    </div>
                   </div>
                 </motion.div>
               ))}
