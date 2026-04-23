@@ -5,8 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import ScrollToTop from "@/components/ScrollToTop";
 import { OdysseyBackground } from "@/components/OdysseyBackground";
-import { LightningProvider } from "@/contexts/LightningContext";
-import { GlobalLightningHandler } from "@/components/GlobalLightningHandler";
+import { AgentModal } from "@/components/EcommerceAgentModal";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
 import HowItWorks from "@/pages/HowItWorks";
@@ -48,17 +47,15 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <LightningProvider>
-          <GlobalLightningHandler />
-          <div className="dark relative min-h-screen bg-black overflow-x-hidden">
-            <OdysseyBackground />
-            <div className="relative z-10 min-h-screen">
-              <ScrollToTop />
-              <Toaster />
-              <Router />
-            </div>
+        <div className="dark relative min-h-screen bg-black overflow-x-hidden">
+          <OdysseyBackground />
+          <div className="relative z-10 min-h-screen">
+            <ScrollToTop />
+            <Toaster />
+            <Router />
           </div>
-        </LightningProvider>
+          <AgentModal />
+        </div>
       </TooltipProvider>
     </QueryClientProvider>
   );

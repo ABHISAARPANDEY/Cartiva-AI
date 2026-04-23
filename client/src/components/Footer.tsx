@@ -13,9 +13,32 @@ export function Footer() {
               </div>
               <span className="font-heading font-bold text-xl tracking-tight">Cartiva AI</span>
             </Link>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              Making every D2C brand operate like a large enterprise using intelligent automation.
-            </p>
+            <address className="not-italic text-sm text-muted-foreground leading-relaxed space-y-1">
+              <p className="font-semibold text-white/90">
+                Innvincible Young Technologies Private Limited
+                <span className="block text-xs text-muted-foreground/80">
+                  (DIIPT Recognized)
+                </span>
+              </p>
+              <p>Innov8 coworking space, 211, 3rd Floor, Okhla, New Delhi</p>
+              <p>UIN - U62013DL2025PTC451530</p>
+              <p>
+                Contact:{" "}
+                <a
+                  href="tel:+919217676566"
+                  className="hover:text-primary transition-colors"
+                >
+                  +91 92176 76566
+                </a>
+                ,{" "}
+                <a
+                  href="tel:+919119671030"
+                  className="hover:text-primary transition-colors"
+                >
+                  +91 91196 71030
+                </a>
+              </p>
+            </address>
           </div>
 
           <div>

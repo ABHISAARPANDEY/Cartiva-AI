@@ -5,47 +5,84 @@ import { Button } from "@/components/ui/button";
 import { Check, Zap, Star, Shield } from "lucide-react";
 import { useState } from "react";
 
-const plans = [
+type Plan = {
+  name: string;
+  price: string;
+  isCustom?: boolean;
+  description: string;
+  features: string[];
+  buttonText: string;
+  highlight: boolean;
+};
+
+const plans: Plan[] = [
   {
     name: "Starter",
-    price: "49",
-    description: "Perfect for new D2C brands just starting out.",
+    price: "100",
+    description: "Perfect for new D2C brands just getting started.",
     features: [
-      "Up to 500 conversations/mo",
-      "WhatsApp & Web Chat",
-      "Standard Order Tracking",
-      "English Support",
-      "Email Support"
+      "500 AI conversations/month (Web chat or WhatsApp)",
+      "200 voice minutes/month",
+      "Omnichannel (Website or WhatsApp)",
+      "Basic AI workflow (FAQs, order tracking)",
+      "1 GB knowledge base (catalogue, FAQs, policies)",
+      "CRM / Google Sheets integration",
+      "Basic analytics dashboard",
+      "1 user seat",
+      "Email support",
+      "English language"
     ],
     buttonText: "Start Free Trial",
     highlight: false
   },
   {
-    name: "Growth",
-    price: "149",
-    description: "Ideal for fast-scaling brands needing advanced automation.",
+    name: "Plus",
+    price: "250",
+    description: "For growing brands ready to automate more channels.",
     features: [
-      "Up to 2,500 conversations/mo",
-      "Abandoned Cart Recovery",
-      "Multilingual AI (Hindi + 10 more)",
-      "Smart Product Recommendations",
-      "Priority Live Chat Support",
-      "Custom Brand Voice"
+      "1,500 AI conversations/month",
+      "600 voice minutes/month",
+      "Omnichannel (Website + WhatsApp)",
+      "Medium AI workflow (returns, COD, recommendations)",
+      "5 GB knowledge base (catalogue, FAQs, policies)",
+      "CRM integrations – Shopify, Zoho, HubSpot",
+      "Advanced analytics (conversion, CSAT, insights)",
+      "3 user seats",
+      "Email + chat support",
+      "Multi-language support"
+    ],
+    buttonText: "Get Started",
+    highlight: false
+  },
+  {
+    name: "Growth",
+    price: "500",
+    description: "For scaling brands that need the full automation stack.",
+    features: [
+      "3,500 AI conversations/month",
+      "1,400 voice minutes/month",
+      "Omnichannel (Website + WhatsApp + Voice + Email)",
+      "Advanced workflows (cart recovery, upsell, cross-sell, follow-ups)",
+      "15 GB knowledge base (catalogue, FAQs, policies)",
+      "CRM integrations – Shopify, Zoho, HubSpot",
+      "Advanced analytics (conversion, CSAT, insights)",
+      "6 user seats",
+      "Priority support",
+      "Multi-language support"
     ],
     buttonText: "Get Started",
     highlight: true
   },
   {
     name: "Enterprise",
-    price: "499",
-    description: "For high-volume brands requiring custom solutions.",
+    price: "Custom",
+    isCustom: true,
+    description: "For high-volume brands needing bespoke solutions.",
     features: [
-      "Unlimited conversations",
-      "Dedicated Account Manager",
-      "Custom CRM Integrations",
-      "White-glove Onboarding",
-      "Advanced Sentiment Analysis",
-      "SLA Guarantees"
+      "Everything in the Growth plan",
+      "High-volume usage with discounted pricing",
+      "Dedicated account manager & priority support",
+      "Custom APIs & webhooks (actions layer)"
     ],
     buttonText: "Contact Sales",
     highlight: false
@@ -90,7 +127,7 @@ export default function Pricing() {
             </div>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
             {plans.map((plan, index) => (
               <motion.div
                 key={index}
@@ -113,10 +150,18 @@ export default function Pricing() {
                 <div className="mb-8">
                   <h3 className="text-xl font-bold font-heading mb-2">{plan.name}</h3>
                   <div className="flex items-baseline gap-1 mb-2">
-                    <span className="text-4xl font-black text-foreground">
-                      ${billingCycle === 'yearly' ? Math.floor(Number(plan.price) * 0.8) : plan.price}
-                    </span>
-                    <span className="text-muted-foreground font-medium">/mo</span>
+                    {plan.isCustom ? (
+                      <span className="text-4xl font-black text-foreground">
+                        Custom
+                      </span>
+                    ) : (
+                      <>
+                        <span className="text-4xl font-black text-foreground">
+                          ${billingCycle === 'yearly' ? Math.floor(Number(plan.price) * 0.8) : plan.price}
+                        </span>
+                        <span className="text-muted-foreground font-medium">/mo</span>
+                      </>
+                    )}
                   </div>
                   <p className="text-sm text-muted-foreground leading-relaxed">
                     {plan.description}

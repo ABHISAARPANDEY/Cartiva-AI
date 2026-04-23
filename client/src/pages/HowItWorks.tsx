@@ -145,7 +145,7 @@ export default function HowItWorks() {
             <div className="relative z-10 space-y-8">
               <h2 className="text-3xl md:text-4xl font-heading font-bold">Ready to Automate Your Success?</h2>
               <p className="text-slate-400 text-lg max-w-xl mx-auto">
-                Join 500+ businesses using Cartiva AI to grow revenue and scale support without increasing headcount.
+                Join 50+ businesses using Cartiva AI to grow revenue and scale support without increasing headcount.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href="/book-demo">

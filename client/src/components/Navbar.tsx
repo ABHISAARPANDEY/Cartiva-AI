@@ -1,8 +1,19 @@
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
-import { Bot, Menu, ChevronDown, ShoppingCart, Building2, Landmark, HeartPulse } from "lucide-react";
+import {
+  Bot,
+  Menu,
+  ChevronDown,
+  ShoppingCart,
+  Building2,
+  Landmark,
+  HeartPulse,
+  Zap,
+} from "lucide-react";
 import { useState } from "react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { TryNowButton } from "@/components/TryNowButton";
+import { agents, OPEN_AGENT_EVENT, type Agent } from "@/data/agents";
 
 const industries = [
   { name: "E-commerce", href: "/industries/ecommerce", icon: <ShoppingCart className="w-4 h-4" />, color: "text-blue-600", colorDark: "text-blue-400" },
@@ -18,7 +29,71 @@ interface NavbarProps {
 export function Navbar({ variant = "default" }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [industriesOpen, setIndustriesOpen] = useState(false);
+  const [mobileTryNowOpen, setMobileTryNowOpen] = useState(false);
   const isDark = variant === "dark";
+
+  const handleMobileAgentClick = (agent: Agent) => {
+    setIsOpen(false);
+    setMobileTryNowOpen(false);
+    if (agent.action.type === "popup") {
+      window.dispatchEvent(
+        new CustomEvent(OPEN_AGENT_EVENT, { detail: agent.action.payload })
+      );
+    }
+  };
+
+  const renderMobileAgentItem = (agent: Agent) => {
+    const content = (
+      <>
+        <div className={`mt-0.5 ${isDark ? agent.colorDark : agent.color}`}>
+          {agent.icon}
+        </div>
+        <div className="flex flex-col text-left">
+          <span className="text-sm font-semibold leading-tight">
+            {agent.name}
+          </span>
+          <span
+            className={`text-xs leading-snug ${
+              isDark ? "text-white/60" : "text-muted-foreground"
+            }`}
+          >
+            {agent.description}
+          </span>
+        </div>
+      </>
+    );
+
+    const itemClasses = `flex items-start gap-3 px-3 py-2 rounded-lg transition-colors w-full ${
+      isDark ? "hover:bg-white/10" : "hover:bg-secondary/50"
+    }`;
+
+    if (agent.action.type === "link") {
+      return (
+        <Link
+          key={agent.id}
+          href={agent.action.href}
+          onClick={() => {
+            setIsOpen(false);
+            setMobileTryNowOpen(false);
+          }}
+          className={itemClasses}
+        >
+          {content}
+        </Link>
+      );
+    }
+
+    return (
+      <button
+        key={agent.id}
+        type="button"
+        onClick={() => handleMobileAgentClick(agent)}
+        className={itemClasses}
+      >
+        {content}
+      </button>
+    );
+  };
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-md supports-[backdrop-filter]:bg-background/60 ${
@@ -35,9 +110,8 @@ export function Navbar({ variant = "default" }: NavbarProps) {
         <div className="hidden md:flex items-center gap-8">
           <Link href="/#features" className={`text-sm font-medium transition-colors ${isDark ? "text-gray-300 hover:text-white" : "text-muted-foreground hover:text-primary"}`}>Features</Link>
           <Link href="/how-it-works" className={`text-sm font-medium transition-colors ${isDark ? "text-gray-300 hover:text-white" : "text-muted-foreground hover:text-primary"}`}>How it Works</Link>
-          
-          {/* Industries Dropdown */}
-          <div 
+
+          <div
             className="relative"
             onMouseEnter={() => setIndustriesOpen(true)}
             onMouseLeave={() => setIndustriesOpen(false)}
@@ -46,12 +120,12 @@ export function Navbar({ variant = "default" }: NavbarProps) {
               Industries
               <ChevronDown className={`w-4 h-4 transition-transform ${industriesOpen ? 'rotate-180' : ''}`} />
             </button>
-            
+
             {industriesOpen && (
               <div className={`absolute top-full left-0 mt-2 w-56 border rounded-xl shadow-xl py-2 z-50 ${isDark ? "bg-black/95 border-white/10" : "bg-background border-border"}`}>
                 {industries.map((industry) => (
-                  <Link 
-                    key={industry.name} 
+                  <Link
+                    key={industry.name}
                     href={industry.href}
                     className={`flex items-center gap-3 px-4 py-3 transition-colors ${isDark ? "hover:bg-white/10 text-white" : "hover:bg-secondary/50"}`}
                   >
@@ -62,21 +136,16 @@ export function Navbar({ variant = "default" }: NavbarProps) {
               </div>
             )}
           </div>
-          
+
           <Link href="/integrations" className={`text-sm font-medium transition-colors ${isDark ? "text-gray-300 hover:text-white" : "text-muted-foreground hover:text-primary"}`}>Integrations</Link>
           <Link href="/pricing" className={`text-sm font-medium transition-colors ${isDark ? "text-gray-300 hover:text-white" : "text-muted-foreground hover:text-primary"}`}>Pricing</Link>
           <Link href="/about" className={`text-sm font-medium transition-colors ${isDark ? "text-gray-300 hover:text-white" : "text-muted-foreground hover:text-primary"}`}>About</Link>
         </div>
 
         <div className="hidden md:flex items-center gap-3">
-          <Link href="/book-demo">
-            <Button size="sm" className="bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/20">
-              Book a Demo
-            </Button>
-          </Link>
+          <TryNowButton variant="navbar" isDark={isDark} />
         </div>
 
-        {/* Mobile Menu */}
         <div className="md:hidden">
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
@@ -88,14 +157,13 @@ export function Navbar({ variant = "default" }: NavbarProps) {
               <div className={`flex flex-col gap-4 mt-8 ${isDark ? "text-white" : ""}`}>
                 <Link href="/#features" onClick={() => setIsOpen(false)} className={`text-sm font-medium transition-colors py-2 ${isDark ? "text-gray-300 hover:text-white" : "text-muted-foreground hover:text-primary"}`}>Features</Link>
                 <Link href="/how-it-works" onClick={() => setIsOpen(false)} className={`text-sm font-medium transition-colors py-2 ${isDark ? "text-gray-300 hover:text-white" : "text-muted-foreground hover:text-primary"}`}>How it Works</Link>
-                
-                {/* Industries Section */}
+
                 <div className="py-2">
                   <span className={`text-sm font-medium ${isDark ? "text-white" : "text-foreground"}`}>Industries</span>
                   <div className="mt-2 ml-4 flex flex-col gap-2">
                     {industries.map((industry) => (
-                      <Link 
-                        key={industry.name} 
+                      <Link
+                        key={industry.name}
                         href={industry.href}
                         className={`flex items-center gap-2 text-sm transition-colors py-1 ${isDark ? "text-gray-300 hover:text-white" : "text-muted-foreground hover:text-primary"}`}
                         onClick={() => setIsOpen(false)}
@@ -106,17 +174,29 @@ export function Navbar({ variant = "default" }: NavbarProps) {
                     ))}
                   </div>
                 </div>
-                
+
                 <Link href="/integrations" onClick={() => setIsOpen(false)} className={`text-sm font-medium transition-colors py-2 ${isDark ? "text-gray-300 hover:text-white" : "text-muted-foreground hover:text-primary"}`}>Integrations</Link>
                 <Link href="/pricing" onClick={() => setIsOpen(false)} className={`text-sm font-medium transition-colors py-2 ${isDark ? "text-gray-300 hover:text-white" : "text-muted-foreground hover:text-primary"}`}>Pricing</Link>
                 <Link href="/about" onClick={() => setIsOpen(false)} className={`text-sm font-medium transition-colors py-2 ${isDark ? "text-gray-300 hover:text-white" : "text-muted-foreground hover:text-primary"}`}>
                   About
                 </Link>
-                
+
                 <hr className={isDark ? "border-white/10 my-2" : "border-border my-2"} />
-                <Link href="/book-demo" onClick={() => setIsOpen(false)}>
-                  <Button className="w-full">Book a Demo</Button>
-                </Link>
+                <Button
+                  className="w-full flex items-center justify-center gap-2"
+                  onClick={() => setMobileTryNowOpen((v) => !v)}
+                >
+                  <Zap className="w-4 h-4" />
+                  Try Now
+                  <ChevronDown
+                    className={`w-4 h-4 transition-transform ${mobileTryNowOpen ? "rotate-180" : ""}`}
+                  />
+                </Button>
+                {mobileTryNowOpen && (
+                  <div className="flex flex-col gap-2 mt-1">
+                    {agents.map((agent) => renderMobileAgentItem(agent))}
+                  </div>
+                )}
               </div>
             </SheetContent>
           </Sheet>

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { Bot, MessageCircle, ChevronDown } from "lucide-react";
+import { TryNowButton } from "@/components/TryNowButton";
 
 const industries = [
   { name: "E-commerce", href: "/industries/ecommerce" },
@@ -196,9 +197,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             variants={itemVariants}
             className="text-5xl md:text-7xl font-heading font-extrabold mb-2 leading-tight"
           >
-            Scale Your Sales{" "}
+            Cartiva AI for Marketing, Sales, & Support for{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary to-accent">
-              Without More Staff
+              Ecommerce & D2C
             </span>
           </motion.h1>
 
@@ -213,18 +214,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             variants={itemVariants}
             className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8"
           >
-            <Link href="/book-demo">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="min-w-[180px] px-8 py-3 bg-primary hover:bg-primary/90 rounded-full text-sm font-medium transition-colors text-primary-foreground flex items-center justify-center gap-2"
-              >
-                Book My Free Demo
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="group-hover:translate-x-1 transition-transform shrink-0">
-                  <path d="M8 3L13 8L8 13M13 8H3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </motion.button>
-            </Link>
+            <TryNowButton variant="hero" isDark />
             <Link href="/how-it-works">
               <motion.button
                 whileHover={{ scale: 1.05 }}
@@ -258,7 +248,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               ))}
             </div>
             <p className="font-medium text-white/80">
-              Trusted by <span className="font-bold text-white">500+</span> growing businesses
+              Trusted by <span className="font-bold text-white">50+</span> growing businesses
             </p>
           </motion.div>
         </motion.div>

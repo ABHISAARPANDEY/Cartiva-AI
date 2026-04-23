@@ -292,7 +292,7 @@ export default function EcommerceIndustry() {
                   Ready to Supercharge Your E-commerce Sales?
                 </h2>
                 <p className="text-white/80 text-lg mb-10">
-                  Join 500+ e-commerce stores using Cartiva AI to recover carts, boost conversions, and scale support without increasing costs.
+                  Join 50+ e-commerce stores using Cartiva AI to recover carts, boost conversions, and scale support without increasing costs.
                 </p>
                 
                 <Link href="/book-demo">

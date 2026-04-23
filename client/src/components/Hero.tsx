@@ -111,7 +111,7 @@ export function Hero() {
                   </motion.div>
                 ))}
               </div>
-              <p className="font-medium text-foreground">Trusted by <span className="font-bold">500+</span> growing businesses</p>
+              <p className="font-medium text-foreground">Trusted by <span className="font-bold">50+</span> growing businesses</p>
             </motion.div>
           </motion.div>
 

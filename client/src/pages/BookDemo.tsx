@@ -19,9 +19,15 @@ interface FormData {
   message: string;
 }
 
+const AGENT_LABELS: Record<string, string> = {
+  ecommerce: "Ecommerce Agent",
+  "lead-qualification": "Lead Qualification Agent",
+};
+
 export default function BookDemo() {
   const [isSubmitted, setIsSubmitted] = React.useState(false);
   const [isLoading, setIsLoading] = React.useState(false);
+  const [selectedAgent, setSelectedAgent] = React.useState<string | null>(null);
   const [formData, setFormData] = React.useState<FormData>({
     firstName: "",
     lastName: "",
@@ -31,6 +37,21 @@ export default function BookDemo() {
     message: "",
   });
   const { toast } = useToast();
+
+  React.useEffect(() => {
+    if (typeof window === "undefined") return;
+    const params = new URLSearchParams(window.location.search);
+    const agent = params.get("agent");
+    if (agent && AGENT_LABELS[agent]) {
+      setSelectedAgent(agent);
+      setFormData((prev) => ({
+        ...prev,
+        message:
+          prev.message ||
+          `I'd like to try the ${AGENT_LABELS[agent]} for my business.`,
+      }));
+    }
+  }, []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { id, value } = e.target;
@@ -95,6 +116,11 @@ export default function BookDemo() {
                 className="space-y-8"
               >
                 <div>
+                  {selectedAgent && AGENT_LABELS[selectedAgent] && (
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/20 text-xs font-bold uppercase tracking-wider mb-4">
+                      Trying: {AGENT_LABELS[selectedAgent]}
+                    </div>
+                  )}
                   <h1 className="text-4xl md:text-5xl font-heading font-bold mb-6 tracking-tight text-foreground">
                     See Cartiva AI <span className="text-primary">in Action</span>
                   </h1>
