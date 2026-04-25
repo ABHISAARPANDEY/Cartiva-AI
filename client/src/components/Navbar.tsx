@@ -104,7 +104,7 @@ export function Navbar({ variant = "default" }: NavbarProps) {
           <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-primary-foreground">
             <Bot size={20} />
           </div>
-          <span className={`font-heading font-bold text-xl tracking-tight ${isDark ? "text-white" : "text-foreground"}`}>Cartiva AI</span>
+          <span className={`font-heading font-bold text-xl tracking-tight ${isDark ? "text-white" : "text-foreground"}`}>TECKSTAQ</span>
         </Link>
 
         <div className="hidden md:flex items-center gap-8">

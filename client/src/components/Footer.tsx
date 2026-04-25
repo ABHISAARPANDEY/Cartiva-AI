@@ -11,7 +11,7 @@ export function Footer() {
               <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-primary-foreground">
                 <Bot size={20} />
               </div>
-              <span className="font-heading font-bold text-xl tracking-tight">Cartiva AI</span>
+              <span className="font-heading font-bold text-xl tracking-tight">TECKSTAQ</span>
             </Link>
             <address className="not-italic text-sm text-muted-foreground leading-relaxed space-y-1">
               <p className="font-semibold text-white/90">

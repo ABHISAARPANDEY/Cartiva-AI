@@ -1,6 +1,6 @@
 import { Link } from "wouter";
 import { ChevronDown, Zap } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import {
   agents,
   OPEN_AGENT_EVENT,
@@ -18,7 +18,9 @@ export function TryNowButton({
   isDark = true,
 }: TryNowButtonProps) {
   const [open, setOpen] = useState(false);
+  const [direction, setDirection] = useState<"down" | "up">("down");
   const containerRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     if (!open) return;
@@ -38,6 +40,30 @@ export function TryNowButton({
     return () => {
       document.removeEventListener("mousedown", onClickOutside);
       document.removeEventListener("keydown", onEsc);
+    };
+  }, [open]);
+
+  useLayoutEffect(() => {
+    if (!open || !triggerRef.current) return;
+    const computeDirection = () => {
+      if (!triggerRef.current) return;
+      const rect = triggerRef.current.getBoundingClientRect();
+      const dropdownEstHeight = 240;
+      const margin = 16;
+      const spaceBelow = window.innerHeight - rect.bottom - margin;
+      const spaceAbove = rect.top - margin;
+      if (spaceBelow < dropdownEstHeight && spaceAbove > spaceBelow) {
+        setDirection("up");
+      } else {
+        setDirection("down");
+      }
+    };
+    computeDirection();
+    window.addEventListener("resize", computeDirection);
+    window.addEventListener("scroll", computeDirection, true);
+    return () => {
+      window.removeEventListener("resize", computeDirection);
+      window.removeEventListener("scroll", computeDirection, true);
     };
   }, [open]);
 
@@ -66,6 +92,7 @@ export function TryNowButton({
   return (
     <div ref={containerRef} className="relative">
       <button
+        ref={triggerRef}
         type="button"
         className={triggerClasses}
         onClick={() => setOpen((v) => !v)}
@@ -82,11 +109,13 @@ export function TryNowButton({
       {open && (
         <div
           role="menu"
-          className={`absolute top-full ${
+          className={`absolute ${
+            direction === "up" ? "bottom-full mb-2" : "top-full mt-2"
+          } ${
             variant === "hero" || variant === "cta"
               ? "left-1/2 -translate-x-1/2"
               : "right-0"
-          } mt-2 w-72 border rounded-xl shadow-xl py-2 z-50 ${
+          } w-72 max-w-[calc(100vw-2rem)] max-h-[80vh] overflow-y-auto overscroll-contain border rounded-xl shadow-xl py-2 z-50 ${
             isDark
               ? "bg-black/95 border-white/10"
               : "bg-background border-border"
