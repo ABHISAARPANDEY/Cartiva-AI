@@ -1,7 +1,12 @@
 import { Link } from "wouter";
 import { ChevronDown, Zap } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-import { agents, OPEN_AGENT_EVENT, type Agent } from "@/data/agents";
+import {
+  agents,
+  OPEN_AGENT_EVENT,
+  OPEN_STORE_PASSWORD_EVENT,
+  type Agent,
+} from "@/data/agents";
 
 interface TryNowButtonProps {
   variant?: "navbar" | "hero" | "cta";
@@ -49,16 +54,17 @@ export function TryNowButton({
       window.dispatchEvent(
         new CustomEvent(OPEN_AGENT_EVENT, { detail: agent.action.payload })
       );
+    } else if (agent.action.type === "password-gate") {
+      window.dispatchEvent(
+        new CustomEvent(OPEN_STORE_PASSWORD_EVENT, {
+          detail: agent.action.payload,
+        })
+      );
     }
   };
 
   return (
-    <div
-      ref={containerRef}
-      className="relative"
-      onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => setOpen(false)}
-    >
+    <div ref={containerRef} className="relative">
       <button
         type="button"
         className={triggerClasses}
@@ -125,6 +131,20 @@ export function TryNowButton({
             }`;
 
             if (agent.action.type === "link") {
+              if (agent.action.external) {
+                return (
+                  <a
+                    key={agent.id}
+                    href={agent.action.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setOpen(false)}
+                    className={itemClasses}
+                  >
+                    {content}
+                  </a>
+                );
+              }
               return (
                 <Link
                   key={agent.id}

@@ -6,12 +6,20 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import ScrollToTop from "@/components/ScrollToTop";
 import { OdysseyBackground } from "@/components/OdysseyBackground";
 import { AgentModal } from "@/components/EcommerceAgentModal";
+import { StorePasswordModal } from "@/components/StorePasswordModal";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
 import HowItWorks from "@/pages/HowItWorks";
 import Integrations from "@/pages/Integrations";
 import Pricing from "@/pages/Pricing";
 import BookDemo from "@/pages/BookDemo";
+import Checkout from "@/pages/Checkout";
+import Onboarding from "@/pages/Onboarding";
+import Dashboard from "@/pages/Dashboard";
+import CustomersPage from "@/pages/dashboard/Customers";
+import AgentSettingsPage from "@/pages/dashboard/AgentSettings";
+import BillingPage from "@/pages/dashboard/Billing";
+import WorkspacePage from "@/pages/dashboard/Workspace";
 import About from "@/pages/About";
 import PrivacyPolicy from "@/pages/PrivacyPolicy";
 import TermsOfService from "@/pages/TermsOfService";
@@ -30,6 +38,13 @@ function Router() {
       <Route path="/integrations" component={Integrations} />
       <Route path="/pricing" component={Pricing} />
       <Route path="/book-demo" component={BookDemo} />
+      <Route path="/checkout" component={Checkout} />
+      <Route path="/onboarding" component={Onboarding} />
+      <Route path="/dashboard" component={Dashboard} />
+      <Route path="/dashboard/customers" component={CustomersPage} />
+      <Route path="/dashboard/agent" component={AgentSettingsPage} />
+      <Route path="/dashboard/billing" component={BillingPage} />
+      <Route path="/dashboard/workspace" component={WorkspacePage} />
       <Route path="/about" component={About} />
       <Route path="/privacy-policy" component={PrivacyPolicy} />
       <Route path="/terms-of-service" component={TermsOfService} />
@@ -55,6 +70,7 @@ function App() {
             <Router />
           </div>
           <AgentModal />
+          <StorePasswordModal />
         </div>
       </TooltipProvider>
     </QueryClientProvider>

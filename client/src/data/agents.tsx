@@ -1,16 +1,25 @@
-import { UserCheck, ShoppingBag } from "lucide-react";
+import { Headphones, ShoppingBag } from "lucide-react";
 import { ReactNode } from "react";
 
 export const OPEN_AGENT_EVENT = "cartiva:open-agent";
+export const OPEN_STORE_PASSWORD_EVENT = "cartiva:open-store-password";
 
 export type AgentPopupPayload = {
   jotformId: string;
   title: string;
 };
 
+export type StorePasswordPayload = {
+  storeName: string;
+  href: string;
+  password: string;
+  description?: string;
+};
+
 export type AgentAction =
-  | { type: "link"; href: string }
-  | { type: "popup"; payload: AgentPopupPayload };
+  | { type: "link"; href: string; external?: boolean }
+  | { type: "popup"; payload: AgentPopupPayload }
+  | { type: "password-gate"; payload: StorePasswordPayload };
 
 export type Agent = {
   id: string;
@@ -26,30 +35,36 @@ export const agents: Agent[] = [
   {
     id: "ecommerce",
     name: "Ecommerce Agent",
-    description: "Product search, order tracking, upsell & cart recovery",
+    description: "Try the live agent on our demo Shopify store",
     icon: <ShoppingBag className="w-4 h-4" />,
     color: "text-amber-600",
     colorDark: "text-amber-400",
     action: {
-      type: "popup",
+      type: "password-gate",
       payload: {
-        jotformId: "019db8d8109b7e51b56d1462c4797924ab5e",
-        title: "Cartiva Ecommerce Agent",
+        storeName: "Cartiva Demo Store",
+        href: "https://test-store-1-220321040922.myshopify.com/",
+        password: "test123",
+        description:
+          "This is a password-protected Shopify demo store. Copy the password below and paste it on the storefront to enter.",
       },
     },
   },
   {
-    id: "lead-qualification",
-    name: "Lead Qualification Agent",
-    description: "Capture & qualify leads around the clock",
-    icon: <UserCheck className="w-4 h-4" />,
+    id: "customer-support",
+    name: "Customer Support Agent",
+    description: "Try the live agent on our demo property hub store",
+    icon: <Headphones className="w-4 h-4" />,
     color: "text-emerald-600",
     colorDark: "text-emerald-400",
     action: {
-      type: "popup",
+      type: "password-gate",
       payload: {
-        jotformId: "019db98f832e7c9bafd3f6f1b063e8a985ca",
-        title: "Cartiva Lead Qualification Agent",
+        storeName: "Property Hub Demo",
+        href: "https://property-hub-368.myshopify.com/",
+        password: "test123",
+        description:
+          "This is a password-protected Shopify demo store. Copy the password below and paste it on the storefront to enter.",
       },
     },
   },
